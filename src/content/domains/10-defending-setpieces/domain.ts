@@ -89,7 +89,8 @@ const bundle: DomainBundle = {
         pitfalls: [
           '低龄人盯人后遗症：中后卫被对方回撤的「伪九号」一路带到中圈还不松口，导致自家禁区中路露出十米大洞被对方边锋斜插偷袭——区域联防中对方前锋回撤过深时应果断交接给 6 号后腰盯防，中卫留在防线维持链条完整！',
         ],
-        lexiconIds: ['rest-defense', 'cover-shadow', 'offside-trap'],
+        lexiconIds: ['rest-defense', 'cover-shadow', 'offside-trap', 'jockeying-delay'],
+        drillIds: ['drill-u12-backfour'],
         citeIds: ['coachesvoice-zonal-setpiece', 'cfa-syllabus-2022', 'afc-c-manual'],
       },
       relatedIds: ['formations-war', 'buildup-press'],
@@ -251,6 +252,7 @@ const bundle: DomainBundle = {
           '低龄防守角球切勿让矮小孩子傻站在两根门柱底下贴柱站死——这样不仅挡不住高球，还会拖在最后面把整条越位线彻底作废，让对手二点球补射时在门前随便站都不越位！',
         ],
         lexiconIds: ['rest-defense', 'expected-goals'],
+        drillIds: ['drill-u13-corner-routine'],
         citeIds: ['coachesvoice-zonal-setpiece', 'ifab-laws'],
       },
       relatedIds: ['pitch-lines', 'freekick-throwin'],

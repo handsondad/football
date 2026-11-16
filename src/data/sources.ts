@@ -514,6 +514,66 @@ export const SOURCES: readonly Source[] = [
     url: 'https://www.kleague.com/youth/youth.do',
     by: 'K联赛',
   },
+  {
+    id: 'ifab-laws-2025-26',
+    title: 'IFAB《足球竞赛规则 2025/26 & 2026/27》正式修订：第12.2条门将用手控球超8秒改判对方角球（裁判最后5秒举手倒计时）及第3章仅限队长沟通准则',
+    url: 'https://www.theifab.com/law-changes/latest/',
+    by: '国际足球协会理事会 IFAB',
+  },
+  {
+    id: 'ifab-circular-31',
+    title: 'IFAB 第31号通告（2025年7月生效并入2026/27第14章）：点球主罚者意外双脚同时触球（如滑倒）若罚进须重罚，未进则判间接任意球或点球决胜计罚失',
+    url: 'https://www.theifab.com/news/clarification-concerning-double-touches/',
+    by: '国际足球协会理事会 IFAB',
+  },
+  {
+    id: 'statsbomb-xgot',
+    title: '射正后期望进球模型（Post-Shot xG / xGOT）：分离射门前机会质量与射手脚法落点终结增量的核心数据指标',
+    url: 'https://statsbomb.com/articles/soccer/introducing-post-shot-xg/',
+    by: 'StatsBomb / Opta Analytics',
+  },
+  {
+    id: 'ibsa-blind-football',
+    title: '国际盲人体育联合会五人制盲人足球竞赛规则：内置发声响铃球、观众静默礼仪、球门后引导员与防守方强制喊「Voy!」防冲撞铁律',
+    url: 'https://blindfootball.sport/about-football/rules-and-downloads/',
+    by: '国际盲人体育联合会 IBSA',
+  },
+  {
+    id: 'fifa-beach-soccer',
+    title: 'FIFA 沙滩足球竞赛规则：3节×12分钟净时间、不限次数流动换人、倒钩射门保护与赤足沙地踝周本体感觉训练',
+    url: 'https://digitalhub.fifa.com/m/435f422b7d7fd6df/original/Beach-Soccer-Laws-of-the-Game.pdf',
+    by: '国际足联 FIFA',
+  },
+  {
+    id: 'afc-womens-asian-cup-2022',
+    title: '2022 女足亚洲杯官方历史档案：中国女足半决赛两度落后点球淘汰日本、决赛 0-2 落后连扳三球 3-2 绝杀韩国夺得队史第9冠',
+    url: 'https://www.the-afc.com/en/national/afc_womens_asian_cup/home.html',
+    by: '亚足联 AFC',
+  },
+  {
+    id: 'xinhua-cunchao-2023',
+    title: '贵州榕江「村超」与民间城市联赛观察：八十年县域足球传统、村民自发赛事组织与基层社区足球毛细血管',
+    url: 'http://www.news.cn/sports/',
+    by: '新华社体育',
+  },
+  {
+    id: 'uefa-female-acl-consensus',
+    title: '欧足联女足运动医学共识：青春期女性球员前交叉韧带（ACL）非接触损伤生物力学机制、神经肌肉防内扣与能量可用性管理',
+    url: 'https://www.uefa.com/insideuefa/medical/',
+    by: '欧足联医学委员会 UEFA Medical',
+  },
+  {
+    id: 'gabbett-acwr-load',
+    title: '训练—伤病预防悖论与急慢性负荷比（ACWR 0.8–1.3 安全窗口）在职业足球周微周期（MD-4至MD+1）中的应用',
+    url: 'https://bjsm.bmj.com/content/50/5/273',
+    by: 'British Journal of Sports Medicine (Gabbett)',
+  },
+  {
+    id: 'fifa-epts-tracking',
+    title: 'FIFA 电子表现与追踪系统（EPTS）认证标准：GNSS/GPS 追踪背心、100Hz 惯性测量单元与全景战术视频分析规范',
+    url: 'https://inside.fifa.com/innovation/standards/epts',
+    by: '国际足联科技创新部 FIFA Innovation',
+  },
 ];
 
 export const SOURCE_BY_ID = new Map(SOURCES.map((s) => [s.id, s]));

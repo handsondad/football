@@ -255,6 +255,81 @@ function DrillDiagram({ kind }: { kind: DrillDiagramType }) {
           </text>
         </g>
       )}
+
+      {kind === 'back-four-shift' && (
+        <g>
+          <rect x="20" y="55" width="64" height="100" fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="1.8" />
+          <polygon points="155,44 128,84 128,128 142,164" fill="rgba(59,130,246,0.22)" stroke="#93c5fd" strokeWidth="2" strokeDasharray="4 3" />
+          {[
+            [155, 44],
+            [128, 84],
+            [128, 128],
+            [142, 164],
+          ].map(([px, py], i) => (
+            <circle key={i} cx={px} cy={py} r="9.5" fill="#2563eb" stroke="#fff" strokeWidth="2" />
+          ))}
+          {[
+            [205, 42],
+            [236, 105],
+            [212, 168],
+          ].map(([px, py], i) => (
+            <circle key={i} cx={px} cy={py} r="9" fill="#ef4444" stroke="#ffe066" strokeWidth="2" />
+          ))}
+          <line x1="196" y1="42" x2="167" y2="44" stroke="#ffe066" strokeWidth="2.6" strokeDasharray="4 3" />
+          <text x="185" y="190" textAnchor="middle" fontSize="10" fill="#fff" fontWeight="700">
+            1上抢封内线 · 2斜后保护 · 3/4收窄成紧凑折线
+          </text>
+        </g>
+      )}
+
+      {kind === 'cutback-corridor' && (
+        <g>
+          <rect x="242" y="40" width="98" height="130" fill="none" stroke="#fff" strokeWidth="2" />
+          <rect x="308" y="72" width="32" height="66" fill="none" stroke="rgba(255,255,255,0.75)" strokeWidth="1.6" />
+          <rect x="336" y="84" width="8" height="42" fill="#fde047" />
+          <rect x="282" y="56" width="24" height="98" rx="6" fill="rgba(254,240,138,0.25)" stroke="#fde047" strokeDasharray="4 3" />
+          <circle cx="318" cy="48" r="9.5" fill="#ff6b35" stroke="#fff" strokeWidth="2" />
+          <circle cx="294" cy="84" r="9" fill="#ff6b35" stroke="#fff" strokeWidth="2" />
+          <circle cx="268" cy="116" r="9.5" fill="#fb923c" stroke="#ffe066" strokeWidth="2.4" />
+          <path d="M314 56 L274 110 L334 116" fill="none" stroke="#ffe066" strokeWidth="2.8" strokeDasharray="5 3" />
+          <text x="140" y="108" textAnchor="middle" fontSize="10.5" fill="#fff" fontWeight="700">
+            前点牵制吸门将 → 倒三角回敲点球点推死角!
+          </text>
+        </g>
+      )}
+
+      {kind === 'futsal-sole-4s' && (
+        <g>
+          <rect x="58" y="30" width="244" height="150" fill="rgba(15,118,110,0.28)" stroke="#99f6e4" strokeWidth="2" />
+          <rect x="296" y="86" width="8" height="38" fill="#fde047" />
+          <circle cx="152" cy="180" r="9.5" fill="#ff6b35" stroke="#ffe066" strokeWidth="2.5" />
+          <circle cx="196" cy="126" r="9.5" fill="#ff6b35" stroke="#fff" strokeWidth="2" />
+          <circle cx="214" cy="116" r="9" fill="#2563eb" stroke="#fff" strokeWidth="2" />
+          <path d="M156 172 L192 132 L176 92 L294 102" fill="none" stroke="#ffe066" strokeWidth="2.6" strokeDasharray="5 3" />
+          <text x="180" y="24" textAnchor="middle" fontSize="10" fill="#fff" fontWeight="700">
+            边线4秒脚踢入场 → 脚底横拉摆脱 → 低平打门
+          </text>
+        </g>
+      )}
+
+      {kind === 'arrow-agility' && (
+        <g>
+          {[
+            [70, 105],
+            [165, 105],
+            [165, 46],
+            [165, 164],
+            [268, 105],
+          ].map(([cx, cy], i) => (
+            <circle key={i} cx={cx} cy={cy} r="7.5" fill="#fde047" stroke="#fff" strokeWidth="1.8" />
+          ))}
+          <path d="M70 105 L165 105 L165 46 L268 105 L70 105" fill="none" stroke="#fff" strokeWidth="2.6" strokeDasharray="5 3" />
+          <path d="M165 105 L165 164 L268 105" fill="none" stroke="#93c5fd" strokeWidth="2" strokeDasharray="4 4" />
+          <text x="180" y="192" textAnchor="middle" fontSize="10" fill="#fff" fontWeight="700">
+            左右双侧对称计时：差值控制在 ≤0.20秒以内
+          </text>
+        </g>
+      )}
     </svg>
   );
 }
@@ -312,7 +387,7 @@ export function DrillsBenchPage({
           <span>欧足联/亚足联标准课表卡片 · 足协×体科所2026版四分位体测评估 · PHV生长板红绿灯监测</span>
           <h1>📋 标准训练教案库与 2026 国标体测中心</h1>
           <p className="page-sub">
-            既提供拿去球场就能照图摆碟带练的 9 套分级教案，又提供客观量化身体素质与骨骺发育安全阈值的科学计算台
+            既提供拿去球场就能照图摆碟带练的 {TRAINING_DRILLS.length} 套分级教案，又提供客观量化身体素质与骨骺发育安全阈值的科学计算台
           </p>
         </div>
       </header>

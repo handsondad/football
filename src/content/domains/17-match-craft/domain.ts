@@ -5,12 +5,12 @@ const bundle: DomainBundle = {
     id: 'match-craft',
     order: 17,
     emoji: '🎯',
-    title: '点球、头球、传中与替补席',
+    title: '终结射门、点球、头球、传中与替补席',
     short: '比赛手艺',
     color: '#c2410c',
-    moduleCode: 'MOD-17 · Penalties, Heading, Crosses & the Bench',
-    kidHook: '点球是蒙对方向还是踢对死角？小孩子为什么要少用头去顶球？传中为什么经常传到门将手里？替补席上的人到底在看什么？',
-    dadLens: '点球跑动与门将起跳时机、英格兰足总 U7–U11 减少主动头球的分年龄指引、传中落点与包抄路线、教练席分析师与队医在球之外看什么',
+    moduleCode: 'MOD-17 · Finishing, Penalties, Heading, Crosses & Bench',
+    kidHook: '单刀球推远角准还是大力爆射准？点球滑倒双脚碰到球算不算进？小孩子为什么要少顶头球？替补席上的人到底在看什么？',
+    dadLens: '单刀终结与射正后期望值（xGOT）、点球信息博弈与IFAB意外双触重罚新规、英足总U7–U11限头球指引、倒三角传中走廊与教练席分工',
   },
   articles: [
     {
@@ -60,8 +60,8 @@ const bundle: DomainBundle = {
         thesis: '点球是一个信息游戏：主罚者若在支撑脚落地后改变目标，动作会暴露；门将若等球离脚再移动，反应时间往往不够。儿童训练应先稳定落点，再引入对抗。',
         sections: [
           {
-            heading: '1. 规则给双方的约束',
-            content: '球必须静止在点球点上。球踢出之前，门将必须留在门线上，可以左右移动，但不能提前离开球门线。其他球员在踢出前要站在罚球区外、点球点后方。主罚者确认方向的窗口，就是助跑那几步。',
+            heading: '1. 规则给双方的约束与 2025/26「意外双脚触球重罚」新规',
+            content: '球必须静止在点球点上。球踢出之前，门将必须至少有一只脚的一部分触及或正对球门线（既不能提前跨出，也不准触摸门柱横梁球网干扰主罚者）。特别注意 IFAB 第 31 号通告及 2026/27 第 14 章重大修订：过去主罚者助跑打滑导致踢球脚把球蹭到支撑脚入网会被直接判违例取消；现行新规明确区分「意外」与「故意」——若因意外同时双脚触球且球进，判罚「重新主罚（Retake）」；若未进则判对方间接任意球（点球决胜计罚失）；而点球击中门柱弹回未经他人触球主罚者故意上前补射，仍属故意二次触球违例判间接任意球。',
           },
           {
             heading: '2. 练习顺序',
@@ -70,6 +70,7 @@ const bundle: DomainBundle = {
         ],
         kpis: [
           { metric: '决定目标的时刻', target: '助跑开始之前', meaning: '最后一步改方向，是大多数打偏和踢正的来源' },
+          { metric: '意外双触新规判据', target: '意外打滑罚进=重罚 | 未进=间任/罚失', meaning: 'IFAB 第31号通告修正公平性，湿滑场地务必穿对鞋钉稳固支撑脚' },
           { metric: '儿童练习顺序', target: '空门落点 → 静止门将 → 允许扑救', meaning: '对抗是最后一层，不是第一层' },
         ],
         prescription: {
@@ -81,9 +82,11 @@ const bundle: DomainBundle = {
         pitfalls: [
           '不要用「大力抽满」当儿童点球的第一要求。力量盖过落点时，球更容易高过横梁或踢向门将正中。',
         ],
-        citeIds: ['ifab-laws', 'cfa-syllabus-2022'],
+        lexiconIds: ['double-touch-retake', 'post-shot-xg'],
+        drillIds: ['drill-u11-finishing-xgot'],
+        citeIds: ['ifab-laws', 'ifab-circular-31', 'cfa-syllabus-2022'],
       },
-      relatedIds: ['goalkeeper-art', 'match-time', 'heading-care', 'cards-var'],
+      relatedIds: ['goalkeeper-art', 'match-time', 'heading-care', 'finishing-craft'],
     },
     {
       id: 'heading-care',
@@ -226,9 +229,11 @@ const bundle: DomainBundle = {
         pitfalls: [
           '不要用「多传中」当作边路唯一任务。没有包抄路线的传中，只是把球权交给门将。',
         ],
+        lexiconIds: ['corridor-of-uncertainty', 'cutback-pass'],
+        drillIds: ['drill-u12-cutback'],
         citeIds: ['cfa-syllabus-2022', 'coachesvoice-zonal-setpiece', 'fa-heading-2024'],
       },
-      relatedIds: ['pass-types', 'corner-tactics', 'heading-care', 'penalty-craft'],
+      relatedIds: ['pass-types', 'corner-tactics', 'heading-care', 'finishing-craft'],
     },
     {
       id: 'the-bench',
@@ -298,9 +303,91 @@ const bundle: DomainBundle = {
         pitfalls: [
           '不要让家长席和教练席同时指挥。孩子会选择声音更大的那一边，结构就散了。',
         ],
+        lexiconIds: ['captain-only-protocol'],
         citeIds: ['uefa-talent-study', 'ifab-laws', 'fifa-11plus-kids', 'cfa-syllabus-2022'],
       },
-      relatedIds: ['match-reading', 'four-moments', 'pitch-comms', 'cross-box'],
+      relatedIds: ['match-reading', 'four-moments', 'pitch-comms', 'finishing-craft'],
+    },
+    {
+      id: 'finishing-craft',
+      topic: 'match-craft',
+      difficulty: 2,
+      tags: ['射门终结', 'xGOT落点'],
+      title: '前锋单刀面对门将时，使出全身力气爆射准，还是贴着草皮推远角更容易进？',
+      proSubtitle: '锋线终结科学：射正后期望值（PSxG / xGOT）、门将倒地物理盲区与四种高把握终结脚法',
+      trigger: '小球员好不容易跑出单刀冲进禁区，闭着眼睛抡圆大腿一脚猛抽，结果不是高射炮飞上天，就是正中门将怀里。',
+      dialogue: [
+        {
+          nian: '爸爸，好不容易冲到门将面前了，使出最大力气狠狠抽一脚，球飞得那么快门将肯定反应不过来吧？',
+          dad: '恰恰相反，闭眼大力爆射是单刀球头号浪费杀手！因为大腿抡得越满，身体后仰越厉害，十脚有五脚飞上看台、三脚正砸在门将肚子上！真正冷血的神射手到了禁区里反而收住蛮力，把「打准死角」排在「打大力量」前面！',
+          cite: ['statsbomb-xgot', 'cfa-syllabus-2022'],
+          show: {
+            kind: 'steps',
+            frames: [
+              { icon: '👀', label: '接球顺领后最后一眼快瞄门将重心' },
+              { icon: '🎯', label: '贴地远角：门将下地折叠最慢的盲区' },
+              { icon: '🚀', label: '近柱上角：角度极小时破肩顶空当' },
+              { icon: '🪶', label: '轻巧挑射：专克提前倒地扑救的门将' },
+            ],
+          },
+        },
+        {
+          nian: '把打准死角排在打大力量前面！为什么顶级前锋单刀最喜欢用脚弓「贴地推射远门柱」呢？',
+          dad: '这是人体物理结构决定的！一米九的高大门将扑半高球一伸胳膊就够着了；可要想扑贴着草皮滚向远端门柱根的地滚球，他必须先把膝盖弯下来折叠身体再横扑出去，手指尖到达贴地死角的时间最慢！',
+          cite: ['statsbomb-xgot'],
+        },
+        {
+          nian: '原来高个子门将扑贴地死角折叠身体最慢！那如果我已经带到很偏的边角、远角被门将封死了怎么办？',
+          dad: '当门将为了防你传中或推远角、重心提前侧移甚至半跪下来时，他肩膀上方靠近近门柱的「上颚顶网」就露出了空当！这时果断用正脚背抽一脚近门柱上角，或者趁门将已经倒地直接脚尖轻挑过他头顶！',
+          cite: ['cfa-syllabus-2022'],
+        },
+        {
+          nian: '根据门将高低姿态选脚法！那数据分析师怎么看出一个前锋是「浪费机会大王」还是「神射手」？',
+          dad: '用一对双胞胎指标：起脚前的机会叫「期望进球 xG」，踢出后根据球钻进门框哪个角落算出来的叫「射正后期望值 xGOT」！如果一个前锋把原本只有 0.2 的普通机会稳稳推向贴柱死角，xGOT 立刻飙升到 0.8，这就是顶级射术！',
+          cite: ['statsbomb-xgot'],
+        },
+        {
+          nian: '把 0.2 的机会踢成 0.8 的死角！那平时练射门，怎样改掉一进禁区就慌张抡大脚的毛病？',
+          dad: '记住三条小口诀：第一脚先把球顺领到射门脚斜前方一步；起脚前抬头瞄一眼门将两只脚站在哪儿；压住胸口别后仰，用宽宽的脚内侧像打台球一样把球贴草皮推进立柱旁一米内的小门！',
+          cite: ['cfa-syllabus-2022'],
+        },
+        {
+          nian: '我懂了！禁区终结不靠闭眼蛮力爆抽，而是顺领一步快瞄门将姿态，优先用脚弓贴地推远门柱死角或巧打近上角与挑射，靠精准落点拉高 xGOT 转化率！',
+          dad: '说得太准啦！越靠近球门心越静、脚越稳，这才叫真正的禁区杀手！',
+        },
+      ],
+      proDeepDive: {
+        thesis: '顶级射手与普通前锋的分水岭不在于最大摆腿球速，而在于高压心率下将「传球精度思维」迁移至射门：用脚内侧推射（Pass the ball into the net）把落点送入距立柱内侧 0.8 米、离地 30 厘米以下的门将生物力学死区。',
+        sections: [
+          {
+            heading: '1. 数据科学视角：xG 与 PSxG / xGOT 的终结增量拆解',
+            content: 'StatsBomb 与 Opta 对数万次单刀射门追踪显示：① 门框正中央三分之一区域的射正球，门将扑救成功率超过 **82%**；② 贴地钻入左右立柱内侧 1 米区域的低平球，即便球速仅 75 km/h，进球转化率仍高达 **78%–86%**！因此分析师用 **Finishing Added = Σ(xGOT) - Σ(xG)** 评估纯射术：长期为正值（如孙兴慜、梅西、凯恩）证明其能持续把半机会射向门将极限盲区，而闷头爆射型前锋因大量脱靶（脱靶 xGOT = 0）长期呈负值。',
+          },
+          {
+            heading: '2. 禁区终结生物力学三铁律：胸盖球、支撑脚锁角、少调整一拍',
+            content: '为什么青少年禁区内十射六飞？根源在于跑动中急于发力导致躯干后倾超过 15°、支撑脚落在球后方太远，脚背触球下半部将球铲向空中。正确动作链是：最后一步支撑脚踏在球侧方 15–20cm 处、鼻尖微压于膝盖前上方（「Chest over the ball」），随摆腿自然向前穿过球心；且在禁区密集防守中，「接球顺领即射（Two-touch）」远比停死多盘一步减少了 60% 的被封堵率。',
+          },
+        ],
+        kpis: [
+          { metric: '单刀黄金落点区', target: '距两侧立柱内缘 ≤1.0m 贴地球', meaning: '门将重心下降折叠耗时最长，远优于半高球（门将最舒适扑救高度）' },
+          { metric: '射手终结增值公式', target: 'Σ(xGOT) - Σ(xG) > 0', meaning: '衡量球员靠射正落点质量而非单纯队友喂饼创造额外进球的能力' },
+        ],
+        prescription: {
+          name: '立柱内侧 1 米「台球袋口推射」挑战',
+          spec: '罚球区前沿 · 两根立柱内侧 1 米各摆一个标志锥作袋口 · 左右脚各 8 球',
+          method: '教练从弧顶斜传地面球，球员第一脚用远端脚顺领入禁区，第二脚严禁发蛮力抽高球，只准用脚内侧贴草皮将球推入两侧立柱与标志锥之间的 1 米袋口！踢进中间大区域不计分，逼迫大脑养成找死角肌肉记忆。',
+          cues: [
+            '口诀：「把射门当成传给球网底角的一脚重传球！」',
+          ],
+        },
+        pitfalls: [
+          '切勿在孩子单刀推射角度稍偏滑门而出时怒吼批评，却对闭眼闷进正中运气球大加赞赏——前者是完全正确的职业决策，只需微调脚踝角度即可成材！',
+        ],
+        lexiconIds: ['post-shot-xg', 'corridor-of-uncertainty', 'cutback-pass'],
+        drillIds: ['drill-u11-finishing-xgot', 'drill-u12-cutback'],
+        citeIds: ['statsbomb-xgot', 'cfa-syllabus-2022'],
+      },
+      relatedIds: ['football-analytics', 'penalty-craft', 'goalkeeper-art', 'cross-box'],
     },
   ],
 };

@@ -8,7 +8,7 @@ const bundle: DomainBundle = {
     title: '青训方法论、训练课结构与选材科学',
     short: '青训方法论',
     color: '#56b870',
-    moduleCode: 'MOD-05 · Youth Methodology & Session Design',
+    moduleCode: 'MOD-06 · Youth Methodology & Session Design',
     kidHook: '为什么巴萨小朋友爱踢「四个球门」的比赛？好教练为什么多提问少吼叫？',
     dadLens: '中国足协五环模型、欧足联 GAG（比赛—练习—比赛）课表设计、Horst Wein FUNiño 四球门模型、U9–U12 敏感期与生物年龄分组（Bio-banding）',
   },

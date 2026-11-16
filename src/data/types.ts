@@ -173,7 +173,11 @@ export type DrillDiagramType =
   | 'transition-box'
   | 'gk-triangle'
   | 'third-man'
-  | 'warmup-11plus';
+  | 'warmup-11plus'
+  | 'back-four-shift'
+  | 'cutback-corridor'
+  | 'futsal-sole-4s'
+  | 'arrow-agility';
 
 export type TrainingDrill = {
   readonly id: string;
@@ -181,7 +185,15 @@ export type TrainingDrill = {
   readonly title: string;
   readonly enTitle: string;
   readonly ageStage: 'U5–U8' | 'U9–U12' | 'U13–U16' | '全年龄段';
-  readonly category: '球感与第一触球' | '1v1突破与防守' | '传控与位置战' | '攻防转换压迫' | '门卫专项' | '神经肌肉防伤';
+  readonly category:
+    | '球感与第一触球'
+    | '1v1突破与防守'
+    | '传控与位置战'
+    | '攻防转换压迫'
+    | '门卫专项'
+    | '神经肌肉防伤'
+    | '防线协同与定位球'
+    | '射门终结与传中';
   readonly areaSize: string;
   readonly players: string;
   readonly workRest: string;

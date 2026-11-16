@@ -8,7 +8,7 @@ const bundle: DomainBundle = {
     title: '回龙观与京北绿茵场地学区实录',
     short: '回龙观生态',
     color: '#ff6b6b',
-    moduleCode: 'MOD-08 · Huilongguan & North BJ Ecosystem',
+    moduleCode: 'MOD-09 · Huilongguan & North BJ Ecosystem',
     kidHook: '回龙观体育公园和东小口藏着多少片球场？「回超」和「小回超」是怎么踢起来的？',
     dadLens: '回龙观20分钟球场矩阵与订场实操、二十年回超/小回超社区生态、昌平39所全国足球特色校梯队拆解、初高中特长生学籍锁区规则与京北甲级青训鉴别',
   },

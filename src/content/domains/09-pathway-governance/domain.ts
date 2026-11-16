@@ -8,7 +8,7 @@ const bundle: DomainBundle = {
     title: '竞赛金字塔、体教双轨与国际转会法',
     short: '职业与法规',
     color: '#f59e0b',
-    moduleCode: 'MOD-09 · Competition Pyramid, Governance & FIFA Law',
+    moduleCode: 'MOD-10 · Competition Pyramid, Governance & FIFA Law',
     kidHook: '从百队杯、京少联赛怎么一路踢进职业队？进国安梯队还要上学吗？几岁才能留洋？',
     dadLens: '北京至全国竞赛阶梯、10岁市足协注册与培训协议避坑、国安南北走训制、国家一级/健将名额精算与高校双轨、FIFA第19条留洋红线与中超B队冲甲新政',
   },
