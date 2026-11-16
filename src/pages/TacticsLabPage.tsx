@@ -7,6 +7,7 @@ import { OffsideLab } from '../components/shows/OffsideLab.tsx';
 import { PitchAnatomyLab } from '../components/shows/PitchAnatomyLab.tsx';
 import { PitchLab } from '../components/shows/PitchLab.tsx';
 import { HistoryPyramidLab } from '../components/shows/HistoryPyramidLab.tsx';
+import { RefereeClaLab } from '../components/shows/RefereeClaLab.tsx';
 import { ScanningLab } from '../components/shows/ShowView.tsx';
 
 type LabTabId =
@@ -15,6 +16,7 @@ type LabTabId =
   | 'formations'
   | 'analytics'
   | 'funino'
+  | 'referee-cla'
   | 'scanning'
   | 'triangles'
   | 'formats'
@@ -63,6 +65,13 @@ const LAB_ITEMS: readonly {
     title: 'Horst Wein 儿童比赛智能模型：观察四座宽球门与 6m 射门区如何无需教练吼叫天然逼出宽度利用与弱侧转移',
     relatedQid: 'funino-session',
     relatedLabel: '打开关联问题：FUNiño 四球门与 GAG 三明治课表设计',
+  },
+  {
+    id: 'referee-cla',
+    badge: '🧑‍⚖️ 场地配平与客串裁判',
+    title: '草坪实操双模沙盘：动态调节不同年龄段 4v2 抢圈标志盘边长（CLA 6–10脚甜点区），并演练主裁 S 型对角线跑位与边裁越位齐平视线',
+    relatedQid: 'drill-space-tuning',
+    relatedLabel: '打开关联问题：CLA 场地人数动态配平与客串裁判对角线跑位',
   },
   {
     id: 'scanning',
@@ -125,7 +134,7 @@ export function TacticsLabPage({
           ← 回到首页
         </button>
         <div className="page-head-meta">
-          <span>规则边界 · 位置战几何 · 百年阵型 · 数据球探模型 · 空气动力学 — 共 11 台交互绿茵模拟器</span>
+          <span>规则边界 · 位置战几何 · 草坪配平与执裁 · 数据球探模型 · 空气动力学 — 共 12 台交互绿茵模拟器</span>
           <h1>🎛️ 绿茵战术、规则与数据沙盘</h1>
         </div>
       </header>
@@ -153,6 +162,7 @@ export function TacticsLabPage({
         {tab === 'formations' && <FormationsLab />}
         {tab === 'analytics' && <AnalyticsLab />}
         {tab === 'funino' && <FuninoLab />}
+        {tab === 'referee-cla' && <RefereeClaLab />}
         {tab === 'scanning' && <ScanningLab />}
         {tab === 'triangles' && <PitchLab mode="triangles" />}
         {tab === 'formats' && <PitchLab mode="formats" />}

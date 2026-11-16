@@ -171,14 +171,28 @@ export function HomePage({
           <button
             type="button"
             className="wb-card"
+            style={{ '--bubble': '#16a34a' } as CSSProperties}
+            onClick={() => onNavigate('#/mastery')}
+          >
+            <span className="wb-icon" aria-hidden="true">🎓</span>
+            <div>
+              <strong>小白爸爸 → 足球专家通关路线</strong>
+              <p>五阶系统学习地图、补齐书本外 20% 的 10 项草坪触球与读赛打卡、12 道临场判罚与防伤闯关考场。</p>
+              <span className="wb-meta">5 阶课表 · 实操打卡 · 闯关自测 →</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            className="wb-card"
             style={{ '--bubble': '#9b6bff' } as CSSProperties}
             onClick={() => onNavigate('#/lab')}
           >
             <span className="wb-icon" aria-hidden="true">🎛️</span>
             <div>
               <strong>战术与规则沙盘</strong>
-              <p>越位定格、1–11号热区、3-2-5攻防变阵、百年阵型倒转金字塔、xG/xT数据模型、FUNiño四球门、扫描与风洞。</p>
-              <span className="wb-meta">11 台交互模拟器 →</span>
+              <p>越位定格、1–11号热区、3-2-5攻防变阵、CLA场地配平与客串裁判跑位、xG/xT模型、FUNiño四球门与风洞。</p>
+              <span className="wb-meta">12 台交互模拟器 →</span>
             </div>
           </button>
 

@@ -2472,6 +2472,343 @@ svg.avatar {
   }
 }
 
+/* 🎓 小白爸爸 → 足球专家通关中心 */
+.mastery-hero-card {
+  background: linear-gradient(135deg, #ffffff 0%, #effdf5 100%);
+  border: 2.5px solid #86efac;
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.mastery-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mastery-rank-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: #166534;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.mastery-rank-hint {
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.mastery-score-box {
+  text-align: right;
+  background: #fff;
+  border: 2px solid #bbf7d0;
+  border-radius: 16px;
+  padding: 8px 16px;
+}
+
+.mastery-score-box b {
+  display: block;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  color: #15803d;
+}
+
+.mastery-score-box small {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.mastery-bar-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #dcfce7;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.mastery-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #0d9488);
+  transition: width 300ms ease;
+}
+
+.mastery-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mastery-metric-chip {
+  background: #fff;
+  border: 1.5px solid #d1fae5;
+  border-radius: 12px;
+  padding: 9px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+.mastery-stage-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mastery-stage-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.mastery-stage-head h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.mastery-stage-head p {
+  margin: 0;
+  color: var(--text-secondary);
+  max-width: 680px;
+  font-size: 0.93rem;
+}
+
+.mastery-all-clear {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.mastery-domain-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mastery-domain-box {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.mastery-domain-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.94rem;
+}
+
+.mastery-domain-title span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.mastery-lesson-pills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+
+.mastery-lesson-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  text-align: left;
+  padding: 8px 11px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  transition: border-color 160ms, transform 160ms;
+}
+
+.mastery-lesson-btn:hover {
+  border-color: var(--pitch-green);
+  transform: translateY(-1px);
+}
+
+.mastery-lesson-btn.is-done {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.mastery-task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mastery-task-card {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 14px 16px;
+  transition: border-color 180ms, background 180ms;
+}
+
+.mastery-task-card.is-checked {
+  background: #f0fdf4;
+  border-color: #4ade80;
+}
+
+.mastery-task-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.mastery-task-check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: #16a34a;
+  flex-shrink: 0;
+}
+
+.mastery-task-card p {
+  margin: 7px 0 8px 27px;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.mastery-inline-link {
+  margin-left: 27px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--pitch-deep);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.mastery-quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mastery-quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mastery-quiz-card {
+  background: #fff;
+  border: 2px solid #f1e4d3;
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+
+.mastery-quiz-qhead {
+  margin-bottom: 10px;
+}
+
+.mastery-quiz-tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.76rem;
+  font-weight: 800;
+  margin-right: 8px;
+}
+
+.mastery-quiz-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mastery-opt-btn {
+  text-align: left;
+  padding: 10px 13px;
+  border-radius: 12px;
+  border: 1.8px solid #e5e7eb;
+  background: #fafafa;
+  font-size: 0.9rem;
+  transition: border-color 150ms, background 150ms;
+}
+
+.mastery-opt-btn:hover {
+  border-color: #94a3b8;
+  background: #fff;
+}
+
+.mastery-opt-btn.is-correct {
+  background: #dcfce7;
+  border-color: #16a34a;
+  font-weight: 700;
+}
+
+.mastery-opt-btn.is-wrong {
+  background: #fee2e2;
+  border-color: #dc2626;
+}
+
+.mastery-quiz-explain {
+  margin-top: 10px;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+}
+
+.mastery-quiz-explain.is-ok {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+}
+
+.mastery-quiz-explain.is-err {
+  background: #fffbeb;
+  border: 1.5px solid #fcd34d;
+}
+
+.mastery-quiz-explain p {
+  margin: 0 0 6px;
+}
+
+.mastery-quiz-explain .mastery-inline-link {
+  margin-left: 0;
+}
+
+@media (max-width: 920px) {
+  .mastery-stage-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mastery-metrics-row,
+  .mastery-task-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .qa-line,
   .hero-ball {

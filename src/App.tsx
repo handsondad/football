@@ -8,6 +8,7 @@ import {
 import { useHeardQuestions } from './hooks/useHeardQuestions.ts';
 import { useReadLens } from './hooks/useReadLens.ts';
 import { CategoryPage } from './pages/CategoryPage.tsx';
+import { DadMasteryPage } from './pages/DadMasteryPage.tsx';
 import { DrillsBenchPage } from './pages/DrillsBenchPage.tsx';
 import { HlgMapPage } from './pages/HlgMapPage.tsx';
 import { HomePage } from './pages/HomePage.tsx';
@@ -20,6 +21,7 @@ type Route =
   | { page: 'home' }
   | { page: 'topic'; topicId: TopicId }
   | { page: 'question'; id: string }
+  | { page: 'mastery' }
   | { page: 'lab' }
   | { page: 'drills'; drillId?: string }
   | { page: 'lexicon'; termId?: string }
@@ -35,6 +37,7 @@ function parseRoute(hash: string): Route {
   if (rawPage === 'q' && param && questionById(param)) {
     return { page: 'question', id: param };
   }
+  if (rawPage === 'mastery') return { page: 'mastery' };
   if (rawPage === 'lab') return { page: 'lab' };
   if (rawPage === 'drills') return { page: 'drills', drillId: param };
   if (rawPage === 'lexicon') return { page: 'lexicon', termId: param };
@@ -84,17 +87,19 @@ export default function App() {
   const seenCount = footballQuestions.filter((q) => heard.includes(q.id)).length;
 
   const activeNav =
-    route.page === 'lab'
-      ? 'lab'
-      : route.page === 'drills'
-        ? 'drills'
-        : route.page === 'lexicon'
-          ? 'lexicon'
-          : route.page === 'map'
-            ? 'map'
-            : route.page === 'pathway'
-              ? 'pathway'
-              : 'home';
+    route.page === 'mastery'
+      ? 'mastery'
+      : route.page === 'lab'
+        ? 'lab'
+        : route.page === 'drills'
+          ? 'drills'
+          : route.page === 'lexicon'
+            ? 'lexicon'
+            : route.page === 'map'
+              ? 'map'
+              : route.page === 'pathway'
+                ? 'pathway'
+                : 'home';
 
   return (
     <div className="site-shell">
@@ -118,6 +123,13 @@ export default function App() {
                   {seenCount}/{footballQuestions.length}
                 </span>
               )}
+            </button>
+            <button
+              type="button"
+              className={`nav-tab ${activeNav === 'mastery' ? 'is-current' : ''}`}
+              onClick={() => go('#/mastery')}
+            >
+              🎓 专家进阶
             </button>
             <button
               type="button"
@@ -192,6 +204,15 @@ export default function App() {
           onBack={goHome}
           onOpenQuestion={openQuestion}
           onSelectTopic={openTopic}
+        />
+      )}
+
+      {route.page === 'mastery' && (
+        <DadMasteryPage
+          heard={heard}
+          onOpenQuestion={openQuestion}
+          onNavigate={go}
+          onBackHome={goHome}
         />
       )}
 

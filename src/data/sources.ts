@@ -574,6 +574,42 @@ export const SOURCES: readonly Source[] = [
     url: 'https://inside.fifa.com/innovation/standards/epts',
     by: '国际足联科技创新部 FIFA Innovation',
   },
+  {
+    id: 'ifab-practical-guidelines',
+    title: 'IFAB《比赛官员实务指南（Practical Guidelines for Match Officials）》：主裁判对角线控制跑位制、助理裁判越位齐平站位与哨音手势语言',
+    url: 'https://www.theifab.com/laws/latest/guidelines-for-match-officials/',
+    by: '国际足球协会理事会 IFAB',
+  },
+  {
+    id: 'cfa-coach-education',
+    title: '中国足球协会《教练员培训管理规定》与亚足联/中国足协 D级、C级教练员及三级裁判员实操考核规范',
+    url: 'https://www.thecfa.cn/',
+    by: '中国足球协会技术部 CFA',
+  },
+  {
+    id: 'bern-rts-consensus',
+    title: '首届世界运动物理治疗大会伯尔尼共识（Bern Consensus on Return to Sport）：伤后重返赛场连续体、单腿跳肢体对称指数（LSI ≥90%）与再伤预防',
+    url: 'https://bjsm.bmj.com/content/50/14/853',
+    by: 'British Journal of Sports Medicine (Ardern et al.)',
+  },
+  {
+    id: 'davids-cla-football',
+    title: '生态动力学与约束主导教学法（Constraints-Led Approach, CLA）：通过调节场地面积、人数与规则约束引导足球决策涌现',
+    url: 'https://www.routledge.com/Constraints-Led-Approach/book-series/CLA',
+    by: 'Keith Davids & Duarte Araújo',
+  },
+  {
+    id: 'fifa-gk-manual',
+    title: 'FIFA Training Centre《现代守门员训练指南》：传中与角球高空统治区划分、单膝保护摘球力学、双拳击球安全区与人墙组织口令',
+    url: 'https://www.fifatrainingcentre.com/en/game/goalkeeping/',
+    by: '国际足联技术研发中心 FIFA Training Centre',
+  },
+  {
+    id: 'uefa-match-analysis',
+    title: '欧足联职业/A级教练课程《现场比赛观察与战术审计手册（Live Match Tactical Audit）》：开场10分钟四阶段结构速写与换人博弈拆解',
+    url: 'https://www.uefa.com/development/coaches/',
+    by: '欧足联教练教育委员会 UEFA Coaching',
+  },
 ];
 
 export const SOURCE_BY_ID = new Map(SOURCES.map((s) => [s.id, s]));

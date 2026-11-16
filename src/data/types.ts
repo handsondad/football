@@ -96,7 +96,9 @@ export type Show =
   /** Horst Wein FUNiño 3v3 四球门宽度与弱侧转移推演板 */
   | { readonly kind: 'funino' }
   /** 百年足球阵型「倒转金字塔」演进沙盘（1872→2026） */
-  | { readonly kind: 'history-pyramid' };
+  | { readonly kind: 'history-pyramid' }
+  /** 裁判对角线跑位制与训练场尺寸×人数动态配平沙盘 */
+  | { readonly kind: 'referee-cla' };
 
 export type DialogueTurn = {
   readonly nian: string;

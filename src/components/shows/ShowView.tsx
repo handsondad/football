@@ -9,6 +9,7 @@ import { HistoryPyramidLab } from './HistoryPyramidLab.tsx';
 import { OffsideLab } from './OffsideLab.tsx';
 import { PitchAnatomyLab } from './PitchAnatomyLab.tsx';
 import { PitchLab } from './PitchLab.tsx';
+import { RefereeClaLab } from './RefereeClaLab.tsx';
 
 export function ScanningLab() {
   const [scanned, setScanned] = useState(true);
@@ -292,5 +293,8 @@ export function ShowView({ show }: { show: Show }) {
 
     case 'history-pyramid':
       return <HistoryPyramidLab />;
+
+    case 'referee-cla':
+      return <RefereeClaLab />;
   }
 }
