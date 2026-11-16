@@ -634,6 +634,18 @@ export const SOURCES: readonly Source[] = [
     url: 'https://www.tandfonline.com/journals/rijs20',
     by: 'Jean Côté, Joseph Baker & Bruce Abernethy',
   },
+  {
+    id: 'fifa-classic-matches',
+    title: 'FIFA 博物馆世界杯经典战役档案：1970阿兹特克「世纪之战」意德4-3、1982萨里亚意巴3-2与2014米内罗巴德1-7技术复盘',
+    url: 'https://www.fifamuseum.com/en/stories/',
+    by: '国际足联世界足球博物馆 FIFA Museum',
+  },
+  {
+    id: 'pl-historic-9320',
+    title: '英超历史官方纪实：2011/12收官战曼城3-2女王公园巡游者「93:20阿圭罗绝杀」与最后一轮同时开球竞赛规程',
+    url: 'https://www.premierleague.com/history',
+    by: '英格兰足球超级联赛官方档案 Premier League',
+  },
 ];
 
 export const SOURCE_BY_ID = new Map(SOURCES.map((s) => [s.id, s]));

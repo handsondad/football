@@ -105,12 +105,6 @@ export default function App() {
     <div className="site-shell">
       <nav className="global-nav" aria-label="主导航">
         <div className="global-nav-inner">
-          <button type="button" className="brand-pill" onClick={goHome}>
-            <span aria-hidden="true">⚽</span>
-            <strong>足球奇遇记</strong>
-            <small>小念 × 爸爸</small>
-          </button>
-
           <div className="nav-links">
             <button
               type="button"

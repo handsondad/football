@@ -84,37 +84,14 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
-}
-
-.brand-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 2px solid var(--border-green);
-  background: #fff;
-  box-shadow: var(--shadow-sm);
-}
-
-.brand-pill strong {
-  font-size: 1.06rem;
-  color: var(--pitch-deep);
-}
-
-.brand-pill small {
-  font-size: 0.78rem;
-  padding: 1px 8px;
-  border-radius: 999px;
-  background: #fff3de;
-  color: #9a5b13;
 }
 
 .nav-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
