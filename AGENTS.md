@@ -24,7 +24,7 @@
 | 目录 / 文件 | 职责说明 | 扩容时是否需要改动路由/页面？ |
 | :--- | :--- | :--- |
 | `src/data/types.ts` | 全站核心 TypeScript 协议（`DomainBundle`、`FootballQuestion`、`Show`、`TrainingDrill`、`LexiconTerm`） | 仅在新增 `Show` 模拟器种类或 `DrillDiagramType` 时扩展联合类型 |
-| `src/content/domains/<序号>-<slug>/domain.ts` | 各大模块化知识领域包（如 `01-pitch-equipment` 至 `23-gk-rts-matchread`） | **零改动自动挂载**：`import.meta.glob('./domains/*/domain.ts')` 自动发现、按 `meta.order` 排序、自动建立双向关联图谱并接入全文搜索（新增领域如归属五阶学习路线，可同步追加 `TopicId` 至 `src/pages/DadMasteryPage.tsx` 的 `MASTERY_STAGES`） |
+| `src/content/domains/<序号>-<slug>/domain.ts` | 各大模块化知识领域包（如 `01-pitch-equipment` 至 `24-star-tales-magic`） | **零改动自动挂载**：`import.meta.glob('./domains/*/domain.ts')` 自动发现、按 `meta.order` 排序、自动建立双向关联图谱并接入全文搜索（新增领域如归属五阶学习路线，可同步追加 `TopicId` 至 `src/pages/DadMasteryPage.tsx` 的 `MASTERY_STAGES`） |
 | `src/data/sources.ts` | 全站权威文献与规则信源注册表（`SOURCES`） | 新增引用前**必须先在此注册 `id`、标题、机构与真实 URL** |
 | `src/content/lexicon/terms.ts` | 中英双语专业术语词典（`LEXICON_TERMS`） | 追加词条对象即可自动渲染并与课题双向互链 |
 | `src/content/drills/drills.ts` | 年龄分级标准训练教案库（`TRAINING_DRILLS`） | 若复用现有 12 种 `diagram` 则零改页面；若新增战术图类型需在 `src/pages/DrillsBenchPage.tsx` 的 `DrillDiagramSvg` 中补充对应 SVG 分支 |
@@ -40,7 +40,7 @@
 AI 编写任何课题时，必须逐条满足 `tools/dialogue-rules.mjs` 的硬性检查规则，否则构建门禁直接失败：
 
 ### 3.1 领域与课题元数据规范
-- **模块连续编号**：新增领域文件夹命名为 `<两位序号>-<英文短横线slug>`（例如 `24-setpiece-engineering`），`meta.id` 必须与每篇下属文章的 `article.topic` 完全一致，`meta.order` 与 `meta.moduleCode`（如 `MOD-24 · ...`）保持全站连续无冲突。
+- **模块连续编号**：新增领域文件夹命名为 `<两位序号>-<英文短横线slug>`（例如 `25-setpiece-engineering`），`meta.id` 必须与每篇下属文章的 `article.topic` 完全一致，`meta.order` 与 `meta.moduleCode`（如 `MOD-25 · ...`）保持全站连续无冲突。
 - **标题必须带问号**：`article.title` 必须是从现象出发的生动中文提问，且**必须包含全角问号 `？`**（例如：`球探去现场看小球员比赛，为什么不盯刚进球的人，反而老盯着不拿球的人看？`）。
 - **专业副标题与触发场景**：`proSubtitle` 提炼硬核学科模型；`trigger` 用一句话白描真实的看台、转播或训练场观察瞬间。
 

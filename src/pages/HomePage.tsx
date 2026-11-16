@@ -57,7 +57,7 @@ export function HomePage({
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="搜一搜：比如 青训、国家队、德国基地、克莱枫丹、中超、世界杯、回超……"
+              placeholder="搜一搜：比如 小罗、亚马尔、梅西餐巾纸、圆月弯刀、越位、青训、世界杯、回超……"
               aria-label="搜索足球问题"
             />
             {query && (

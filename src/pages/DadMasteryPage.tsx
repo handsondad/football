@@ -70,6 +70,7 @@ const MASTERY_STAGES: readonly MasteryStage[] = [
       'football-history',
       'football-stories',
       'football-stars',
+      'star-tales-magic',
       'world-football',
       'nation-pathways',
       'china-football',

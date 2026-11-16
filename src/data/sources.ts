@@ -610,6 +610,30 @@ export const SOURCES: readonly Source[] = [
     url: 'https://www.uefa.com/development/coaches/',
     by: '欧足联教练教育委员会 UEFA Coaching',
   },
+  {
+    id: 'uefa-euro-2024-report',
+    title: 'UEFA EURO 2024 官方技术报告：西班牙两翼爆点体系、亚马尔16岁最年轻进球纪录与现代前场球员节奏控制',
+    url: 'https://www.uefatechnicalreports.com/uefa-euro-2024',
+    by: '欧足联技术观察团 UEFA Technical Observers',
+  },
+  {
+    id: 'fifa-fair-play-awards',
+    title: 'FIFA 公平竞赛奖历史名录与体育道德宪章：迪卡尼奥手接传中护伤员、克洛泽主动坦白手球取消进球等经典判例',
+    url: 'https://inside.fifa.com/about-fifa/official-documents',
+    by: '国际足联公平竞赛委员会 FIFA Fair Play',
+  },
+  {
+    id: 'clanet-carlos-spiral',
+    title: '旋转球螺旋轨迹物理学（The Spinning Ball Spiral）：罗伯托·卡洛斯1997年35米外脚背香蕉任意球湍流阻力危机与后程急拐机制',
+    url: 'https://iopscience.iop.org/article/10.1088/1367-2630/12/9/093004',
+    by: 'New Journal of Physics (Christophe Clanet & David Quéré)',
+  },
+  {
+    id: 'cote-deliberate-play',
+    title: '运动参与发展模型（DMSP）：街头自由玩耍（Deliberate Play / 桑巴街头足球）对儿童内在热爱与创造性球感的决定性作用',
+    url: 'https://www.tandfonline.com/journals/rijs20',
+    by: 'Jean Côté, Joseph Baker & Bruce Abernethy',
+  },
 ];
 
 export const SOURCE_BY_ID = new Map(SOURCES.map((s) => [s.id, s]));

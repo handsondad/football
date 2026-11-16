@@ -549,6 +549,60 @@ export const TRAINING_DRILLS: readonly TrainingDrill[] = [
     ],
     relatedArticleIds: ['return-to-play-rts', 'concussion-firstaid', 'female-athlete-science', 'warmup-11plus'],
   },
+  {
+    id: 'drill-u8-samba-pet',
+    code: 'DR-21',
+    title: '小罗快乐魔法秀：「不看人传球 + 慢动作牛尾巴」家庭球感闯关',
+    enTitle: 'Ronaldinho Joyful Freestyle: No-Look Pass & Slow-Mo Elástico Challenge',
+    ageStage: 'U5–U8',
+    category: '球感与第一触球',
+    areaSize: '客厅泡沫垫或小区草坪 5m × 5m（摆3把小椅子或水瓶当木头防守人）',
+    players: '孩子 1 人 + 爸爸当捧场观众与接球门神',
+    workRest: '每次自由炫技 60 秒 × 4 轮（全程只许欢呼鼓掌，零批评纠错！）',
+    equipment: '软质海绵球或3/4号足球1颗、标志碟或水瓶3个',
+    diagram: 'futsal-sole-4s',
+    objective: '复刻罗纳尔迪尼奥童年客厅绕家具踢球的快乐球感启蒙，用「演戏骗过爸爸」激发孩子主动钻研脚腕柔韧度与人球亲密感。',
+    rules: [
+      '第1关「眼神骗局（No-Look Pass）」：孩子带球靠近水瓶，脸和眼睛夸张地扭向左边大喊「看左边！」，脚弓却悄悄把球稳稳推给右边的爸爸！',
+      '第2关「橡皮筋小牛尾巴」：先扶着墙分解慢动作——右脚外侧把球往右轻轻推半步，脚腕立刻往里一勾把球拉回左边绕过水瓶，熟练后再不扶墙挑战！',
+      '第3关「自创招牌秀」：60 秒音乐时间里，用脚底拉球、脚后跟磕球绕过三把椅子射门，进门后做自己发明的安全庆祝动作！',
+    ],
+    progressions: [
+      '父子互换角色：让孩子守小门，爸爸笨拙模仿牛尾巴被孩子断球反击，孩子笑得越开心越想天天碰球！',
+    ],
+    coachingQuestions: [
+      '当你的眼睛故意往左边看、脚却往右边传球的时候，爸爸是不是真的傻乎乎扑错方向啦？',
+      '做牛尾巴的时候，第一步把球往外推得太远好拉回来，还是轻轻推在脚尖够得着的半步内才能像橡皮筋一样弹回来？',
+    ],
+    relatedArticleIds: ['ronaldinho-r9-samba', 'dribble-feint', 'futsal-touch', 'star-celebrations-secrets'],
+  },
+  {
+    id: 'drill-u10-hero-finishing',
+    code: 'DR-22',
+    title: '球星英雄卡射门局：「姆巴佩闪电内切 vs 哈兰德盲侧包抄」双模式闯关',
+    enTitle: 'Superstar Archetype Finishing: Mbappé Near-Post Cut vs Haaland Blindside Tap-In',
+    ageStage: 'U9–U12',
+    category: '射门终结与传中',
+    areaSize: '半场罚球区前沿 20m × 18m（左肋设突破门，后点设盲侧潜伏桩）',
+    players: '2–6 人轮换（每次出发前大声抽选本轮扮演哪位球星！）',
+    workRest: '每人扮演 2 次姆巴佩 + 2 次哈兰德为一组 × 3 组',
+    equipment: '4号球6颗、标志锥4个、便携球门1座',
+    diagram: 'cutback-corridor',
+    objective: '利用儿童天然崇拜偶像的角色扮演心理，把枯燥射门训练变成「解锁球星技能包」，一次掌握边锋变速低射近角与中锋后点反跑抢点。',
+    rules: [
+      '抽中「⚡ 姆巴佩卡」：从左肋标志锥接爸爸直塞球，高速带球一步内切，在防守锥前突然立起脚背瞄准近门柱下角干脆低平球劲射！',
+      '抽中「🤖 哈兰德卡」：先躲在代表中卫的红锥背后（盲侧视野外），等爸爸在边路低头准备横传的一刹那，闪电斜插绕到红锥身前，不停球一脚端射入网！',
+      '抽中「🌟 亚马尔卡」：右路接球先故意放慢半拍晃动肩膀，再左脚内侧兜一记弧线球钻远角！',
+    ],
+    progressions: [
+      '要求每次进球后说出「刚才我用的是哪位球星的哪一招」，把球星看球记忆直接转化为自己的球场武器库！',
+    ],
+    coachingQuestions: [
+      '扮演哈兰德抢点时，早早站桩等在门前容易被后卫看住，还是先藏在后卫背后、球传出来瞬间再猛冲出来更吓人？',
+      '扮演亚马尔在右路内切时，一直死命闷头快跑好瞄准，还是射门前故意慢半拍调整步点踢得更准？',
+    ],
+    relatedArticleIds: ['mbappe-haaland-yamal', 'finishing-craft', 'blindside-movement', 'messi-ronaldo'],
+  },
 ];
 
 export const DRILL_BY_ID = new Map(TRAINING_DRILLS.map((d) => [d.id, d]));
