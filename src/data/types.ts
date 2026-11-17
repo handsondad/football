@@ -229,3 +229,45 @@ export type LexiconTerm = {
   readonly onPitchSign: string;
   readonly relatedArticleIds: readonly string[];
 };
+
+export type VideoCategory =
+  | '规则与裁判'
+  | '个人技术教学'
+  | '青训与亲子训练'
+  | '运动医学与防伤'
+  | '战术分析'
+  | '经典比赛'
+  | '纪录片与人物';
+
+export type VideoKind =
+  | 'video'
+  | 'playlist'
+  | 'channel'
+  | 'channel-search'
+  | 'course'
+  | 'archive'
+  | 'documentary';
+
+export type VideoAudience = '亲子' | '教练' | '裁判' | '球迷';
+
+export type VideoResource = {
+  readonly id: string;
+  readonly title: string;
+  readonly category: VideoCategory;
+  readonly kind: VideoKind;
+  readonly platform: string;
+  readonly publisher: string;
+  readonly url: string;
+  /** 国内可直接打开的备用入口（多为 B 站搜索） */
+  readonly altUrl?: string;
+  readonly altLabel?: string;
+  readonly lang: string;
+  readonly audience: readonly VideoAudience[];
+  readonly level: '入门' | '进阶' | '专业';
+  readonly year?: number;
+  readonly duration?: string;
+  readonly access: '免费' | '免费注册' | '付费订阅';
+  readonly summary: string;
+  readonly howToWatch: string;
+  readonly relatedArticleIds: readonly string[];
+};

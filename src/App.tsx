@@ -16,6 +16,7 @@ import { LexiconPage } from './pages/LexiconPage.tsx';
 import { PathwayPage } from './pages/PathwayPage.tsx';
 import { QuestionPage } from './pages/QuestionPage.tsx';
 import { TacticsLabPage } from './pages/TacticsLabPage.tsx';
+import { VideoLibraryPage } from './pages/VideoLibraryPage.tsx';
 
 type Route =
   | { page: 'home' }
@@ -25,6 +26,7 @@ type Route =
   | { page: 'lab' }
   | { page: 'drills'; drillId?: string }
   | { page: 'lexicon'; termId?: string }
+  | { page: 'videos'; videoId?: string }
   | { page: 'map' }
   | { page: 'pathway' };
 
@@ -41,6 +43,7 @@ function parseRoute(hash: string): Route {
   if (rawPage === 'lab') return { page: 'lab' };
   if (rawPage === 'drills') return { page: 'drills', drillId: param };
   if (rawPage === 'lexicon') return { page: 'lexicon', termId: param };
+  if (rawPage === 'videos') return { page: 'videos', videoId: param };
   if (rawPage === 'map' || rawPage === 'hlg') return { page: 'map' };
   if (rawPage === 'pathway' || rawPage === 'roadmap') return { page: 'pathway' };
   return { page: 'home' };
@@ -83,23 +86,12 @@ export default function App() {
   const openQuestion = (id: string) => go(`#/q/${id}`);
   const openDrill = (drillId: string) => go(`#/drills/${drillId}`);
   const openTerm = (termId: string) => go(`#/lexicon/${termId}`);
+  const openVideo = (videoId: string) => go(`#/videos/${videoId}`);
 
   const seenCount = footballQuestions.filter((q) => heard.includes(q.id)).length;
 
   const activeNav =
-    route.page === 'mastery'
-      ? 'mastery'
-      : route.page === 'lab'
-        ? 'lab'
-        : route.page === 'drills'
-          ? 'drills'
-          : route.page === 'lexicon'
-            ? 'lexicon'
-            : route.page === 'map'
-              ? 'map'
-              : route.page === 'pathway'
-                ? 'pathway'
-                : 'home';
+    route.page === 'topic' || route.page === 'question' ? 'home' : route.page;
 
   return (
     <div className="site-shell">
@@ -148,6 +140,13 @@ export default function App() {
             </button>
             <button
               type="button"
+              className={`nav-tab ${activeNav === 'videos' ? 'is-current' : ''}`}
+              onClick={() => go('#/videos')}
+            >
+              🎬 视频资料
+            </button>
+            <button
+              type="button"
               className={`nav-tab ${activeNav === 'map' ? 'is-current' : ''}`}
               onClick={() => go('#/map')}
             >
@@ -186,6 +185,7 @@ export default function App() {
             onOpenQuestion={openQuestion}
             onOpenDrill={openDrill}
             onOpenTerm={openTerm}
+            onOpenVideo={openVideo}
           />
         );
       })()}
@@ -227,6 +227,15 @@ export default function App() {
         <LexiconPage
           key={route.termId ?? 'all'}
           initialTermId={route.termId}
+          onOpenQuestion={openQuestion}
+          onBackHome={goHome}
+        />
+      )}
+
+      {route.page === 'videos' && (
+        <VideoLibraryPage
+          key={route.videoId ?? 'all'}
+          initialVideoId={route.videoId}
           onOpenQuestion={openQuestion}
           onBackHome={goHome}
         />

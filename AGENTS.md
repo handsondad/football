@@ -28,6 +28,7 @@
 | `src/data/sources.ts` | 全站权威文献与规则信源注册表（`SOURCES`） | 新增引用前**必须先在此注册 `id`、标题、机构与真实 URL** |
 | `src/content/lexicon/terms.ts` | 中英双语专业术语词典（`LEXICON_TERMS`） | 追加词条对象即可自动渲染并与课题双向互链 |
 | `src/content/drills/drills.ts` | 年龄分级标准训练教案库（`TRAINING_DRILLS`） | 若复用现有 12 种 `diagram` 则零改页面；若新增战术图类型需在 `src/pages/DrillsBenchPage.tsx` 的 `DrillDiagramSvg` 中补充对应 SVG 分支 |
+| `src/content/videos/videos.ts` | 教学视频、经典比赛与纪录片资料库（`VIDEO_RESOURCES`），渲染于 `#/videos` 并在课题页「配套视频」中按 `relatedArticleIds` 自动反链 | 追加对象即可；只收官方/版权方发布且已实际打开核实的链接，严禁猜测 YouTube 视频 ID |
 | `src/components/shows/*.tsx` + `ShowView.tsx` | 嵌入在对话轮次中的可视化图解与交互式球场模拟器 | 复用 `steps` / `numbers` / `bars` / `compare` / `ruler` 零改组件；新增交互实验室需同步挂载至 `ShowView.tsx` 与 `src/pages/TacticsLabPage.tsx` |
 | `src/data/hlg-resources.ts` / `pathway-atlas.ts` | 京北绿茵场地学区实录 / 青训标准与升学通路结构化数据 | 更新地域球场、赛历或升学政策时直接维护对应数据表 |
 | `tools/new-content.mjs` | 领域与单篇课题 CLI 脚手架生成器 | 辅助工具，勿随意破坏参数契约 |

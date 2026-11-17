@@ -4,6 +4,7 @@ import { readdirSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { TRAINING_DRILLS } from '../src/content/drills/drills.ts';
 import { LEXICON_TERMS } from '../src/content/lexicon/terms.ts';
+import { VIDEO_RESOURCES } from '../src/content/videos/videos.ts';
 import { SOURCES } from '../src/data/sources.ts';
 
 const domainsDir = new URL('../src/content/domains/', import.meta.url);
@@ -133,10 +134,25 @@ for (const t of LEXICON_TERMS) {
   }
 }
 
+if (new Set(VIDEO_RESOURCES.map((v) => v.id)).size !== VIDEO_RESOURCES.length) {
+  say('VIDEOS', 'duplicate video IDs');
+}
+for (const v of VIDEO_RESOURCES) {
+  if (!/^https:\/\//.test(v.url)) say(v.id, 'video url must be https');
+  if (v.altUrl && !/^https:\/\//.test(v.altUrl)) say(v.id, 'video altUrl must be https');
+  if (!v.summary || !v.howToWatch) say(v.id, 'video needs summary and howToWatch');
+  if (v.relatedArticleIds.length === 0) say(v.id, 'video needs ≥1 related article');
+  for (const aid of v.relatedArticleIds) {
+    if (!knownQuestions.has(aid)) say(v.id, `video references unknown article ${aid}`);
+  }
+  const text = JSON.stringify(v);
+  if (forbiddenMeta.test(text)) say(v.id, `contains forbidden meta phrasing (${text.match(forbiddenMeta)?.[0]})`);
+}
+
 for (const p of problems) console.log(p);
 console.log(
   problems.length
     ? `❌ ${problems.length} problem(s) found`
-    : `✅ Verified ${bundles.length} domains, ${allQuestions.length} dual-layer lessons (${allQuestions.reduce((n, q) => n + q.dialogue.length, 0)} turns + ${allQuestions.length} ProDeepDives), ${TRAINING_DRILLS.length} drills, ${LEXICON_TERMS.length} lexicon terms & ${SOURCES.length} sources!`
+    : `✅ Verified ${bundles.length} domains, ${allQuestions.length} dual-layer lessons (${allQuestions.reduce((n, q) => n + q.dialogue.length, 0)} turns + ${allQuestions.length} ProDeepDives), ${TRAINING_DRILLS.length} drills, ${LEXICON_TERMS.length} lexicon terms, ${VIDEO_RESOURCES.length} videos & ${SOURCES.length} sources!`
 );
 process.exitCode = problems.length ? 1 : 0;

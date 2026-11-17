@@ -12,6 +12,7 @@ import {
   topicById,
   type TopicId,
 } from '../content/registry.ts';
+import { VIDEO_RESOURCES } from '../content/videos/videos.ts';
 import { HLG_RESOURCES } from '../data/hlg-resources.ts';
 
 const TOPIC_GROUPS: readonly { readonly title: string; readonly topicIds: readonly TopicId[] }[] = [
@@ -266,6 +267,20 @@ export function HomePage({
               <strong>中英双语足球术语词典</strong>
               <p>收录 Juego de Posición、Half-Space、La Pausa、PPDA、Bio-banding、DOGSO 等核心概念。</p>
               <span className="wb-meta">{LEXICON_TERMS.length} 个术语词条 →</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            className="wb-card"
+            style={{ '--bubble': '#ef4444' } as CSSProperties}
+            onClick={() => onNavigate('#/videos')}
+          >
+            <span className="wb-icon" aria-hidden="true">🎬</span>
+            <div>
+              <strong>足球视频资料库</strong>
+              <p>规则讲解、技术教学、青训游戏、防伤热身、战术分析，以及经典比赛回放和纪录片，每条附观看提示。</p>
+              <span className="wb-meta">{VIDEO_RESOURCES.length} 个官方视频资料 →</span>
             </div>
           </button>
 

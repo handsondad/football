@@ -14,6 +14,7 @@ import {
   type FootballQuestion,
   type ReadLens,
 } from '../content/registry.ts';
+import { videosForArticle } from '../content/videos/videos.ts';
 import { SOURCE_BY_ID } from '../data/sources.ts';
 import type { Source } from '../data/types.ts';
 
@@ -27,6 +28,7 @@ type Props = {
   onOpenQuestion: (id: string) => void;
   onOpenDrill: (drillId: string) => void;
   onOpenTerm: (termId: string) => void;
+  onOpenVideo: (videoId: string) => void;
 };
 
 function collectTurnCites(turn: DialogueTurn): readonly string[] {
@@ -83,6 +85,7 @@ export function QuestionPage({
   onOpenQuestion,
   onOpenDrill,
   onOpenTerm,
+  onOpenVideo,
 }: Props) {
   const topic = topicById(question.topic);
   const siblings = useMemo(() => questionsIn(question.topic), [question.topic]);
@@ -105,6 +108,7 @@ export function QuestionPage({
   const linkedDrills = (pro.drillIds ?? [])
     .map((id) => DRILL_BY_ID.get(id))
     .filter((x) => Boolean(x));
+  const linkedVideos = videosForArticle(question.id);
 
   const embeddedInteractiveShows = useMemo(
     () =>
@@ -312,6 +316,24 @@ export function QuestionPage({
           )}
 
           <section className="qa-wrap" aria-label="延伸阅读">
+            {linkedVideos.length > 0 && (
+              <div className="qa-videos">
+                <h3>🎬 配套视频</h3>
+                <div className="pro-cross-chips">
+                  {linkedVideos.map((v) => (
+                    <button
+                      key={v.id}
+                      type="button"
+                      className="pro-link-pill is-video"
+                      onClick={() => onOpenVideo(v.id)}
+                    >
+                      ▶ {v.title} · {v.publisher}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {relatedSame.length > 0 && (
               <div className="qa-related">
                 <h3>

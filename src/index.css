@@ -1369,6 +1369,108 @@ svg.avatar {
   font-size: 0.85rem;
 }
 
+/* 🎬 视频资料库 */
+.video-access-note {
+  margin: 4px 0 10px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: #fff8eb;
+  border: 1.5px dashed #f3c26b;
+  font-size: 0.85rem;
+  color: #7a4f00;
+}
+
+.video-filter-label {
+  align-self: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.video-empty {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.video-group {
+  margin-top: 22px;
+}
+
+.video-group-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.video-group-title small {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.video-card h3 {
+  font-size: 1.05rem;
+}
+
+.video-meta {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  color: var(--pitch-deep);
+}
+
+.video-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.video-watch-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--pitch-green, #2fb36d);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.video-watch-btn:hover {
+  filter: brightness(1.06);
+}
+
+.video-watch-btn.is-alt {
+  background: #fff;
+  color: #0e7490;
+  border: 1.5px solid #67e8f9;
+}
+
+.video-audience {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.qa-videos h3 {
+  margin: 0 0 4px;
+  font-size: 1.02rem;
+}
+
+.qa-videos .pro-cross-chips {
+  margin-top: 6px;
+}
+
+.pro-link-pill.is-video {
+  border-color: #fca5a5;
+  background: #fef2f2;
+  color: #991b1b;
+  text-align: left;
+}
+
 .qa-meta-row {
   display: flex;
   flex-wrap: wrap;
