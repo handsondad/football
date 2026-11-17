@@ -14,6 +14,29 @@ import {
 } from '../content/registry.ts';
 import { HLG_RESOURCES } from '../data/hlg-resources.ts';
 
+const TOPIC_GROUPS: readonly { readonly title: string; readonly topicIds: readonly TopicId[] }[] = [
+  { title: '⚖️ 场地、规则与不同踢法', topicIds: ['pitch-gear', 'rules-ref', 'football-family'] },
+  {
+    title: '🦶 技术、战术与看比赛',
+    topicIds: ['skills-ball', 'tactics-board', 'defense-setpieces', 'offball-duels', 'match-craft', 'gk-rts-matchread', 'scouting-tech'],
+  },
+  { title: '📋 训练、身体与心理', topicIds: ['youth-science', 'body-health', 'mind-game', 'coach-ref-practice'] },
+  { title: '📖 历史、故事与球星', topicIds: ['football-history', 'football-stories', 'football-stars', 'star-tales-magic'] },
+  { title: '🌍 世界足球与中国足球', topicIds: ['world-football', 'nation-pathways', 'china-football', 'season-map'] },
+  { title: '📍 北京本地与升学通路', topicIds: ['hlg-local', 'pro-pathway'] },
+];
+
+function groupTopics() {
+  const grouped = new Set(TOPIC_GROUPS.flatMap((g) => g.topicIds));
+  const groups = TOPIC_GROUPS.map((g) => ({
+    title: g.title,
+    topics: footballTopics.filter((t) => g.topicIds.includes(t.id)),
+  }));
+  const rest = footballTopics.filter((t) => !grouped.has(t.id));
+  if (rest.length > 0) groups.push({ title: '🆕 更多分类', topics: rest });
+  return groups.filter((g) => g.topics.length > 0);
+}
+
 type Props = {
   heard: readonly string[];
   onTopic: (id: TopicId) => void;
@@ -28,6 +51,7 @@ export function HomePage({
   onNavigate,
 }: Props) {
   const [query, setQuery] = useState('');
+  const topicGroups = useMemo(groupTopics, []);
 
   const trimmed = query.trim();
   const matches = useMemo(() => (trimmed ? searchQuestions(trimmed) : []), [trimmed]);
@@ -131,33 +155,54 @@ export function HomePage({
           </span>
         </div>
 
-        <div className="home-systems">
-          {footballTopics.map((topic) => {
-            const list = questionsIn(topic.id);
-            const done = list.filter((q) => heard.includes(q.id)).length;
-            return (
-              <button
-                key={topic.id}
-                type="button"
-                className="system-card"
-                style={{ '--bubble': topic.color } as CSSProperties}
-                onClick={() => onTopic(topic.id)}
-              >
-                <span className="system-emoji" aria-hidden="true">
-                  {topic.emoji}
-                </span>
-                <div>
-                  <strong>{topic.title}</strong>
-                </div>
-                <small>{topic.kidHook}</small>
-                <span className="sys-pro-lens">{topic.dadLens}</span>
-                <span className="system-count">
-                  {list.length} 个问题{done > 0 && ` · ⭐ 看过 ${done}`} →
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        <nav className="home-group-jump" aria-label="分类分组">
+          {topicGroups.map((group, idx) => (
+            <button
+              key={group.title}
+              type="button"
+              onClick={() =>
+                document.getElementById(`home-group-${idx}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+            >
+              {group.title}
+            </button>
+          ))}
+        </nav>
+
+        {topicGroups.map((group, idx) => (
+          <div key={group.title} className="home-group">
+            <h3 id={`home-group-${idx}`} className="home-group-title">
+              {group.title}
+            </h3>
+            <div className="home-systems">
+              {group.topics.map((topic) => {
+                const list = questionsIn(topic.id);
+                const done = list.filter((q) => heard.includes(q.id)).length;
+                return (
+                  <button
+                    key={topic.id}
+                    type="button"
+                    className="system-card"
+                    style={{ '--bubble': topic.color } as CSSProperties}
+                    onClick={() => onTopic(topic.id)}
+                  >
+                    <span className="system-emoji" aria-hidden="true">
+                      {topic.emoji}
+                    </span>
+                    <div>
+                      <strong>{topic.title}</strong>
+                    </div>
+                    <small>{topic.kidHook}</small>
+                    <span className="sys-pro-lens">{topic.dadLens}</span>
+                    <span className="system-count">
+                      {list.length} 个问题{done > 0 && ` · ⭐ 看过 ${done}`} →
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </section>
 
       <section aria-labelledby="home-atlas-title" className="home-workbench">
@@ -176,9 +221,9 @@ export function HomePage({
           >
             <span className="wb-icon" aria-hidden="true">🎓</span>
             <div>
-              <strong>小白爸爸 → 足球专家通关路线</strong>
-              <p>五阶系统学习地图、补齐书本外 20% 的 10 项草坪触球与读赛打卡、12 道临场判罚与防伤闯关考场。</p>
-              <span className="wb-meta">5 阶课表 · 实操打卡 · 闯关自测 →</span>
+              <strong>爸爸的五阶学习路线</strong>
+              <p>按顺序读完全站问题，配 10 项球场上的实操打卡和 12 道情境自测题。</p>
+              <span className="wb-meta">5 阶课表 · 实操打卡 · 情境自测 →</span>
             </div>
           </button>
 

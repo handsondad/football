@@ -5,6 +5,8 @@ export default defineConfig({
   base: './',
   plugins: [react()],
   build: {
+    // 全文搜索与关联图谱需要首屏即加载全部领域内容，domains 包刻意不拆分
+    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
         manualChunks(id) {

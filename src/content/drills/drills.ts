@@ -298,7 +298,7 @@ export const TRAINING_DRILLS: readonly TrainingDrill[] = [
       '进球奖励：通过「边线脚踢球 → 脚底拉球做墙 → 迎球一脚破门」配合打进的球计 2 分！',
     ],
     progressions: [
-      '进阶：执行五人制累计犯规意识约束——防守方累计满 3 次鲁莽伸脚犯规，直接送给对方一次 9 米无遮挡点射机会。',
+      '进阶（训练变体，非正式规则）：防守方累计 3 次鲁莽伸脚犯规，就送对方一次无人墙点射。正式五人制规则是半场第 6 次累计犯规起，从 10 米点罚无人墙任意球。',
     ],
     coachingQuestions: [
       '把球放上边线再抬头找队友，4 秒钟够用吗？应该在捡球跑向边线时就看哪里？',
@@ -336,7 +336,7 @@ export const TRAINING_DRILLS: readonly TrainingDrill[] = [
   {
     id: 'drill-u11-arrow-cod',
     code: 'DR-13',
-    title: '2026国标「左右对称箭头变向跑」制动与爆发竞速',
+    title: '2026 版足协体测手册「左右对称箭头变向跑」制动与爆发竞速',
     enTitle: 'CFA Symmetrical Arrowhead Agility & Deceleration Duel',
     ageStage: 'U9–U12',
     category: '神经肌肉防伤',
@@ -525,7 +525,7 @@ export const TRAINING_DRILLS: readonly TrainingDrill[] = [
   {
     id: 'drill-rts-hop-test',
     code: 'DR-20',
-    title: '伤后复出医学标尺：单腿远跳对称指数（LSI ≥90%）与无预判变向通关测试',
+    title: '伤后复出参考测试：单腿远跳对称指数（常用参考 LSI ≥90%）与听口令变向',
     enTitle: 'Return-to-Sport Field Battery: Single-Leg Hop LSI ≥90% & Reactive Cut Test',
     ageStage: 'U13–U16',
     category: '神经肌肉防伤',
@@ -534,14 +534,14 @@ export const TRAINING_DRILLS: readonly TrainingDrill[] = [
     workRest: '静态对称跳跃测试 + 3组无预判听口令变向（次日零肿胀方可过关）',
     equipment: '软卷尺1把、标志锥4个、足球1颗',
     diagram: 'arrow-agility',
-    objective: '用国际运动医学伯尔尼共识的客观量化测试替代「不疼就能踢」的危险经验主义，在家门口草坪准确检验伤腿爆发力与离心缓冲是否达标。',
+    objective: '伯尔尼共识主张把复出看作「重返参与→重返运动→恢复竞技水平」的连续过程，由医生、康复师、教练和家庭共同决定。这组草坪测试是其中的辅助观察，用来代替「不疼就能踢」的经验判断，不是唯一放行标准。',
     rules: [
       '第1关（单腿定距远跳 Single-Leg Hop for Distance）：双手叉腰，先用健侧好腿单脚起跳并同一只脚稳停 2 秒不踉跄（移步即重测），取 3 次平均值（如 160cm）；再测伤愈腿，平均值必须达到好腿的 90% 以上（≥144cm）且膝盖零内扣、零疼痛！',
       '第2关（单腿交叉三连跳 Crossover Triple Hop）：沿白线左右交叉连续单脚跳三步稳停，同样核验伤腿距离 ÷ 好腿距离 ≥ 90%。',
       '第3关（听口令反应式变向）：全速冲向 T 字中心锥瞬间，家长才随机喊「左！」或「右！」，观察伤腿急刹蹬地是否有潜意识畏惧躲闪动作；次日清晨复查伤处无酸胀发热，方准许进入球队有对抗合练！',
     ],
     progressions: [
-      '通关后首场正式比赛严格执行「复出时间梯度表」：第1场替补出场 ≤20 分钟 → 第2场 45 分钟 → 第3场恢复打满全场。',
+      '测试通过后，复出节奏（何时合练、首场踢多久）由医生或康复师按个人恢复情况制定；常见做法是先短时间替补，次日无不良反应再逐步增加。',
     ],
     coachingQuestions: [
       '慢跑完全不疼了为什么一上比赛抢球还是容易原地再次崴脚？单脚跳落地稳停那两秒钟测出了什么秘密？',

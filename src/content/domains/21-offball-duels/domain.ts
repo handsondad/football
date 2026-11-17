@@ -25,7 +25,7 @@ const bundle: DomainBundle = {
         {
           nian: '爸爸，为什么刚才进球的叔叔站在门前那么大一片空地没人防，对方的两个大高个后卫怎么像没看见他一样？',
           dad: '不是后卫眼神不好，而是前锋用了一招「盲侧隐身术」！后卫防守时脖子再灵活，也没法同时死死盯住边路传球的人和身后的前锋；趁后卫扭头看球的那一秒，前锋悄悄溜到了后卫后脑勺背面的视野死角里！',
-          cite: ['coachesvoice-zonal-setpiece', 'cfa-syllabus-2022'],
+          cite: ['jordet-scanning', 'cfa-syllabus-2022'],
           show: {
             kind: 'steps',
             frames: [
@@ -85,7 +85,7 @@ const bundle: DomainBundle = {
         ],
         lexiconIds: ['blindside-run', 'corridor-of-uncertainty', 'third-man-run'],
         drillIds: ['drill-u12-cutback', 'drill-u12-thirdman'],
-        citeIds: ['coachesvoice-zonal-setpiece', 'barca-methodology', 'uefa-talent-study', 'cfa-syllabus-2022'],
+        citeIds: ['jordet-scanning', 'barca-methodology', 'cfa-syllabus-2022'],
       },
       relatedIds: ['cross-box', 'offside-rule', 'spaces-scan', 'finishing-craft'],
     },
@@ -114,7 +114,7 @@ const bundle: DomainBundle = {
         },
         {
           nian: '把身体像圆规一样卡在人和球中间！那上面说「前臂自然微曲感知对手」，用手臂碰他不算推人犯规吗？',
-          dad: '这要分清「侦察触角」和「犯规推搡」的天壤之别！你把小臂平平弯在腰胸侧面像一根盲杖去感觉他往哪边挤，既没抓球衣、也没伸直胳膊推人或往上扬肘子打脸，这在足球规则里是百分百合法的护球屏障！',
+          dad: '这要分清「感觉」和「推人」！小臂平平弯在腰胸侧面，像一根盲杖去感觉他往哪边挤；但抓球衣、伸直胳膊把人撑开或推开、往上扬肘子，都会被判犯规。规则允许用身体位置护球，不允许用手臂或身体把对手撑开，轻微接触算不算犯规由裁判判断。',
           cite: ['ifab-laws'],
         },
         {
@@ -141,7 +141,7 @@ const bundle: DomainBundle = {
           },
           {
             heading: '2. 合法手臂屏障与肘部红牌禁区边界',
-            content: 'IFAB 第 12 章对护球手部动作有明确执法红线：手肘必须保持在**肩部水平线以下**且前臂贴近自身躯干外展不超一拳半（触感探针）；一旦出现向后挥甩手肘击打对方下巴/颈部，即使非故意伤人也会按鲁莽（黄牌）乃至暴力/过分力量（直接红牌）严惩！',
+            content: 'IFAB 第 12 章允许在球处于可控范围内时用身体位置护球，但**不得用手臂或身体把对手撑开**。手臂只作平衡和感知，贴近自己身体；若把手臂当作「工具或武器」向后挥甩击打对手，可视程度判鲁莽（黄牌）或暴力行为（红牌）。',
           },
         ],
         kpis: [
@@ -177,7 +177,7 @@ const bundle: DomainBundle = {
         {
           nian: '爸爸，对方边锋带球冲过来的时候，后卫为什么不赶紧冲上去一脚把球踢走，反而侧着身子退着跑呀？',
           dad: '因为足球场上谁先鲁莽猛扑伸脚，谁就输了一大半！你想，对手正全速往前冲，你迎面猛扑上去，只要他脚尖轻轻往旁边一拨，你刹不住车擦肩而过，身后几十米就全是他的大马路啦！',
-          cite: ['cfa-syllabus-2022', 'coachesvoice-zonal-setpiece'],
+          cite: ['cfa-syllabus-2022'],
           show: {
             kind: 'compare',
             badTitle: '❌ 业余莽撞防守（一晃就倒）',
@@ -191,7 +191,7 @@ const bundle: DomainBundle = {
         {
           nian: '猛扑上去刹不住车就会被一步过掉！那后卫为什么要「45度侧着身子」退，不面对面正对着退呢？',
           dad: '正对着倒退跑既慢又容易绊个四脚朝天！把身体斜过来 45 度、一脚在前一脚在后，有两个大妙用：第一，像一面斜挡板一样挡住他往球门正中间切的路，逼他往狭窄的边线角落走；第二，他一加速你蹬一步就能并排跟上！',
-          cite: ['coachesvoice-zonal-setpiece'],
+          cite: ['afc-c-manual'],
         },
         {
           nian: '像斜挡板一样逼他往边线角落走！要是边锋在你面前左右踩单车、疯狂晃肩膀骗你怎么办？',
@@ -237,7 +237,7 @@ const bundle: DomainBundle = {
         ],
         lexiconIds: ['jockeying-delay', 'rest-defense'],
         drillIds: ['drill-u12-backfour', 'drill-u8-1v1-gates'],
-        citeIds: ['cfa-syllabus-2022', 'coachesvoice-zonal-setpiece'],
+        citeIds: ['cfa-syllabus-2022', 'afc-c-manual'],
       },
       relatedIds: ['dribble-feint', 'zonal-defense', 'fouls-freekick', 'no-hands'],
     },
@@ -253,7 +253,7 @@ const bundle: DomainBundle = {
         {
           nian: '爸爸，为什么强队刚才还不紧不慢站着看对方倒脚，突然一瞬间五六个人像听见哨声一样同时扑上去抢球？',
           dad: '因为聪明球队绝不一个人傻跑去当「遛猴」，他们全队在等猎物露出破绽的「压迫触发暗号」！只要场上出现事先约好的那几个危险画面，不用教练喊，前中后三条线同一秒钟启动扑上去收网！',
-          cite: ['barca-methodology', 'coachesvoice-zonal-setpiece'],
+          cite: ['barca-methodology', 'uefa-euro-2024-report'],
           show: {
             kind: 'steps',
             frames: [
@@ -267,7 +267,7 @@ const bundle: DomainBundle = {
         {
           nian: '原来全队在等这四个收网暗号！为什么「球传向边线」也是大家最喜欢的逼抢暗号呢？',
           dad: '你想呀，球在场地正中间时，拿球人前后左右 360 度都能传球突围；可一旦球传到了边线上，边线外面是出界禁区，相当于「边线白白替我们当了一整排防守队友」，瞬间堵死了他一半的逃跑方向，我们两三个人一夹就瓮中捉鳖啦！',
-          cite: ['coachesvoice-zonal-setpiece'],
+          cite: ['uefa-euro-2024-report'],
         },
         {
           nian: '边线替我们堵死了一半逃跑路！那前锋扑向对方左中卫的时候，为什么不走直线，非要拐个弯跑弧线呢？',
@@ -313,7 +313,7 @@ const bundle: DomainBundle = {
         ],
         lexiconIds: ['pressing-trigger', 'cover-shadow', 'gegenpressing', 'ppda'],
         drillIds: ['drill-u13-transition', 'drill-u10-rondo'],
-        citeIds: ['barca-methodology', 'coachesvoice-zonal-setpiece'],
+        citeIds: ['barca-methodology', 'uefa-euro-2024-report'],
       },
       relatedIds: ['four-moments', 'buildup-press', 'football-analytics', 'triangles-rondo'],
     },
@@ -329,7 +329,7 @@ const bundle: DomainBundle = {
         {
           nian: '爸爸，88 分钟咱们 1 比 0 领先，刚才前锋带球过去明明可以勉强起脚远射，干嘛要把球带到角旗杆边护住呀？',
           dad: '这叫老辣的「终盘时间管理」！只剩最后两三分钟还领先一球时，最珍贵的宝贝就是「球权在我们脚下」！如果仓促浪射一脚踢给对方门将，人家一个大脚手抛球反击过来就可能绝平我们；带到对方角旗区护住蹭个界外球或角球，对手离我们球门一百米远干着急！',
-          cite: ['ifab-laws', 'coachesvoice-zonal-setpiece'],
+          cite: ['ifab-laws'],
           show: {
             kind: 'compare',
             badTitle: '⚠️ 最后5分钟领先方昏招',
@@ -342,13 +342,13 @@ const bundle: DomainBundle = {
         },
         {
           nian: '把球带到角旗杆旁边用身体护住，不算犯规拖延时间吗？',
-          dad: '只要足球一直在比赛活球滚动中、留在你伸脚可控制的范围里，用后背和臀部挡住对手抢球是百分百合法的护球！但千万注意两个违例红线：不能用双脚把球死死夹住躺地上不让踢，界外球和门将抱球超过 8 秒也会被罚！',
+          dad: '只要球在比赛中、留在你伸脚能碰到的范围里，用后背和臀部的位置挡住对手就是合法护球，但不能用手臂把人撑开。还要注意：不能用双脚把球夹住躺在地上不让踢；死球后故意拖着不掷界外球，裁判可以出示黄牌；门将手里抱球超过 8 秒判角球。',
           cite: ['ifab-laws', 'ifab-laws-2025-26'],
         },
         {
-          nian: '活球护球完全合法，死球超时才违例！那反过来如果我们 0 比 1 落后只剩五分钟，是不是十个人全冲进对方禁区等高球最好？',
+          nian: '活球时护球合法，死球后故意拖延才会被罚！那反过来如果我们 0 比 1 落后只剩五分钟，是不是十个人全冲进对方禁区等高球最好？',
           dad: '千万别十个人全挤进禁区成一锅粥！如果所有人全堆在门前，中场一个人都没有，第一谁给你送高质量传球？第二球被对方后卫头球顶出来落在禁区弧外，没人抢下「第二落点」立刻就会被对手单刀打死成 0 比 2！',
-          cite: ['coachesvoice-zonal-setpiece'],
+          cite: ['cfa-syllabus-2022'],
         },
         {
           nian: '禁区弧外必须留人抢第二落点二次进攻！那什么时候守门员才会真的弃门冲到对方禁区抢角球呢？',
@@ -389,7 +389,7 @@ const bundle: DomainBundle = {
         ],
         lexiconIds: ['rest-defense', 'gk-eight-second-rule'],
         drillIds: ['drill-u13-corner-routine', 'drill-u13-transition'],
-        citeIds: ['ifab-laws', 'ifab-laws-2025-26', 'coachesvoice-zonal-setpiece'],
+        citeIds: ['ifab-laws', 'ifab-laws-2025-26'],
       },
       relatedIds: ['match-time', 'corner-tactics', 'error-reset', 'the-bench'],
     },

@@ -123,7 +123,7 @@ export default function App() {
               className={`nav-tab ${activeNav === 'mastery' ? 'is-current' : ''}`}
               onClick={() => go('#/mastery')}
             >
-              🎓 专家进阶
+              🎓 学习路线
             </button>
             <button
               type="button"
