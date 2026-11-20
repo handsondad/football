@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { questionById } from '../content/registry.ts';
+import { questionById } from '../content/catalog.ts';
 import { VIDEO_RESOURCES } from '../content/videos/videos.ts';
 import type { VideoAudience, VideoCategory, VideoKind } from '../data/types.ts';
 

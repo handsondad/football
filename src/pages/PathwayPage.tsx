@@ -6,7 +6,7 @@ import {
   GRADE_MATRIX,
   STAGE_SPECS,
 } from '../data/pathway-atlas.ts';
-import { questionById, topicById } from '../content/registry.ts';
+import { questionById, topicById } from '../content/catalog.ts';
 import { SOURCE_BY_ID, SOURCES } from '../data/sources.ts';
 import type { Source } from '../data/types.ts';
 

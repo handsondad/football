@@ -21,7 +21,7 @@ description: >-
 ## 2. 脚手架与零侵入扩容
 
 ```bash
-# 1. 新建整个领域包（import.meta.glob 自动发现，无需改路由/注册表）
+# 1. 新建整个领域包（import.meta.glob 自动发现，无需改路由；写完后运行 npm run content:index 刷新目录）
 npm run new-content -- domain 25-setpiece-engineering "定位球精密战术工程"
 
 # 2. 打印单篇双层课题骨架（粘贴进对应 domain.ts 的 articles 数组）
@@ -57,6 +57,7 @@ npm run new-content -- article setpiece-engineering corner-screens "为什么角
 ## 4. 交付前强制三连门禁
 
 ```bash
+npm run content:index   # 先刷新 src/content/catalog.json（check 会拦截过期目录）
 npm run check
 npm run typecheck
 npm run build

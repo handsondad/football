@@ -20,12 +20,13 @@
 
 ## 2. 仓库架构与零侵入扩容地图
 
-项目基于 **React 19 + TypeScript + Vite** 构建，核心采用**自动发现插件化架构**（`src/content/registry.ts`）：
+项目基于 **React 19 + TypeScript + Vite** 构建，核心采用**自动发现插件化架构**：`src/content/catalog.ts` 提供首屏轻量目录（由脚本生成的 `catalog.json`），`src/content/load.ts` 在打开问题时按领域懒加载正文，`src/content/search.ts` 负责全文检索。
 
 | 目录 / 文件 | 职责说明 | 扩容时是否需要改动路由/页面？ |
 | :--- | :--- | :--- |
 | `src/data/types.ts` | 全站核心 TypeScript 协议（`DomainBundle`、`FootballQuestion`、`Show`、`TrainingDrill`、`LexiconTerm`） | 仅在新增 `Show` 模拟器种类或 `DrillDiagramType` 时扩展联合类型 |
-| `src/content/domains/<序号>-<slug>/domain.ts` | 各大模块化知识领域包（如 `01-pitch-equipment` 至 `24-star-tales-magic`） | **零改动自动挂载**：`import.meta.glob('./domains/*/domain.ts')` 自动发现、按 `meta.order` 排序、自动建立双向关联图谱并接入全文搜索（新增领域如归属五阶学习路线，可同步追加 `TopicId` 至 `src/pages/DadMasteryPage.tsx` 的 `MASTERY_STAGES`） |
+| `src/content/domains/<序号>-<slug>/domain.ts` | 各大模块化知识领域包（如 `01-pitch-equipment` 至 `24-star-tales-magic`） | **零改动自动挂载**：`load.ts` 的 `import.meta.glob('./domains/*/domain.ts')` 把每个领域打成独立分块按需加载，目录按 `meta.order` 排序、自动建立双向关联图谱并接入全文搜索；**新增或修改领域内容后必须运行 `npm run content:index`** 刷新目录（新增领域如归属五阶学习路线，可同步追加 `TopicId` 至 `src/pages/DadMasteryPage.tsx` 的 `MASTERY_STAGES`） |
+| `src/content/catalog.json` + `tools/content-index.mjs` | 首页、分类页、学习路线与导航用的轻量目录（领域元数据、题目卡片字段、对话轮数、图解类型、资料计数），由 `npm run content:index` 生成 | **勿手改**；`npm run check` 会拦截过期目录 |
 | `src/data/sources.ts` | 全站权威文献与规则信源注册表（`SOURCES`） | 新增引用前**必须先在此注册 `id`、标题、机构与真实 URL** |
 | `src/content/lexicon/terms.ts` | 中英双语专业术语词典（`LEXICON_TERMS`） | 追加词条对象即可自动渲染并与课题双向互链 |
 | `src/content/drills/drills.ts` | 年龄分级标准训练教案库（`TRAINING_DRILLS`） | 若复用现有 12 种 `diagram` 则零改页面；若新增战术图类型需在 `src/pages/DrillsBenchPage.tsx` 的 `DrillDiagramSvg` 中补充对应 SVG 分支 |
@@ -81,7 +82,7 @@ AI 编写任何课题时，必须逐条满足 `tools/dialogue-rules.mjs` 的硬�
 
 ### 3.5 跨模块双向织网要求（拒绝信息孤岛）
 - **文献溯源**：每篇课题在 `dialogue[].cite` 与 `proDeepDive.citeIds` 中至少引用 1–3 个存在于 `src/data/sources.ts` 的真实信源 ID。
-- **横向图谱**：每篇课题配置 3–4 个跨领域的 `relatedIds`（`registry.ts` 会自动将其扩展为双向无向边）。
+- **横向图谱**：每篇课题配置 3–4 个跨领域的 `relatedIds`（`catalog.ts` 会自动将其扩展为双向无向边）。
 - **词典与教案联动**：在 `proDeepDive.lexiconIds` 与 `proDeepDive.drillIds` 中关联对应词条与教案；反之新增 `LexiconTerm` 或 `TrainingDrill` 时，其 `relatedArticleIds` 也必须指向真实存在的课题 ID。
 
 ---
@@ -143,10 +144,11 @@ AI 编写任何课题时，必须逐条满足 `tools/dialogue-rules.mjs` 的硬�
   - 需要为 GitHub PR 附上新增交互沙盘或战术图的截图/录屏时，调用 `github-pr-media` skill。
 
 ### Step 6：执行强制三连门禁校验（Validate Before Done）
-每次修改或扩充完成后，**必须依次通过以下三条命令且零警告零报错**，方可向用户交付：
+每次修改或扩充完成后，先运行 `npm run content:index` 刷新首屏目录，再**依次通过以下三条命令且零警告零报错**，方可向用户交付：
 
 ```bash
-npm run check      # 校验全站领域、对话咬合链、字数区间、禁用词及词典/教案/文献双向引用完整性
+npm run content:index  # 由领域包重新生成 src/content/catalog.json（内容有改动时必跑）
+npm run check      # 校验全站领域、对话咬合链、字数区间、禁用词、词典/教案/文献双向引用完整性及目录是否过期
 npm run typecheck  # 校验全量 TypeScript 严格类型契约
 npm run build      # 验证 Vite 生产包编译与静态资源打包通过
 ```

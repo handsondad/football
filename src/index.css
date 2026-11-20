@@ -361,6 +361,41 @@ button {
   color: var(--text-secondary);
 }
 
+.home-results-loading {
+  margin-left: 6px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.home-results-retry {
+  margin-left: 8px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--border-color);
+  background: #fff;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.page-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 12px;
+  min-height: 50vh;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.page-status p {
+  flex-basis: 100%;
+  margin: 0;
+}
+
 /* 首页九大专业领域卡片（3列宽敞卡片，兼顾亲子钩子与教练专业域定义） */
 .home-systems {
   display: grid;

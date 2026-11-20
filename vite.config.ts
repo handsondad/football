@@ -5,17 +5,12 @@ export default defineConfig({
   base: './',
   plugins: [react()],
   build: {
-    // 全文搜索与关联图谱需要首屏即加载全部领域内容，domains 包刻意不拆分
-    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
+        // 只把第三方依赖单独成块；领域正文、教案、词典交给 Rollup 按动态 import 自动拆分，
+        // 首屏只加载轻量目录（catalog.json），打开问题时才下载所在领域。
         manualChunks(id) {
-          const norm = id.replaceAll('\\', '/');
-          if (norm.includes('/node_modules/')) return 'vendor';
-          if (norm.includes('/src/content/domains/')) return 'domains';
-          if (norm.includes('/src/content/drills/') || norm.includes('/src/content/lexicon/')) {
-            return 'reference-kb';
-          }
+          if (id.replaceAll('\\', '/').includes('/node_modules/')) return 'vendor';
         },
       },
     },

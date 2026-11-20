@@ -6,6 +6,7 @@ import { TRAINING_DRILLS } from '../src/content/drills/drills.ts';
 import { LEXICON_TERMS } from '../src/content/lexicon/terms.ts';
 import { VIDEO_RESOURCES } from '../src/content/videos/videos.ts';
 import { SOURCES } from '../src/data/sources.ts';
+import { staleIndex } from './content-index.mjs';
 
 const domainsDir = new URL('../src/content/domains/', import.meta.url);
 const domainFolders = readdirSync(domainsDir, { withFileTypes: true })
@@ -150,6 +151,10 @@ for (const v of VIDEO_RESOURCES) {
 }
 
 for (const p of problems) console.log(p);
+if (await staleIndex()) {
+  problems.push('CATALOG: src/content/catalog.json 已过期');
+  console.log('CATALOG: src/content/catalog.json 与领域内容不一致，请运行 npm run content:index');
+}
 console.log(
   problems.length
     ? `❌ ${problems.length} problem(s) found`

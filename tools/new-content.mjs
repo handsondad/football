@@ -12,7 +12,7 @@ const [, , kind, arg1, arg2, arg3] = process.argv;
 
 if (!kind || (kind !== 'domain' && kind !== 'article')) {
   console.log(`用法：
-  1. 新增整个足球专业领域包（自动被 registry 发现挂载，无需改任何页面代码）：
+  1. 新增整个足球专业领域包（自动被发现挂载，无需改任何页面代码；写完后运行 npm run content:index）：
      npm run new-content -- domain <序号-目录名> "<领域中文标题>"
      示例：npm run new-content -- domain 10-set-pieces "定位球攻防工程"
 
@@ -59,12 +59,12 @@ export default bundle;
 `,
     'utf8'
   );
-  console.log(`✅ 已创建新领域插件：${targetFile}\n重启或保存后全站自动发现并挂载该板块！`);
+  console.log(`✅ 已创建新领域插件：${targetFile}\n写好内容后运行 npm run content:index 刷新首屏目录，再运行 npm run check 校验。`);
 } else if (kind === 'article') {
   const topicId = arg1 || 'tactics-board';
   const articleId = arg2 || 'new-lesson';
   const title = arg3 || '为什么会出现这个球场现象？';
-  console.log(`// 将以下双层课题对象粘贴至对应领域的 articles 数组中，运行 npm run check 校验：
+  console.log(`// 将以下双层课题对象粘贴至对应领域的 articles 数组中，运行 npm run content:index 刷新目录后再运行 npm run check 校验：
 {
   id: '${articleId}',
   topic: '${topicId}',

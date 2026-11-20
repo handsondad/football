@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "check": "node tools/dialogue-rules.mjs",
+    "content:index": "node tools/content-index.mjs",
     "new-content": "node tools/new-content.mjs"
   },
   "dependencies": {

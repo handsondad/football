@@ -7,9 +7,10 @@ import {
   questionsIn,
   topicById,
   type Difficulty,
-  type FootballQuestion,
+  type QuestionCard as Card,
   type TopicId,
-} from '../content/registry.ts';
+} from '../content/catalog.ts';
+import { prefetchQuestion } from '../content/load.ts';
 
 type Props = {
   topicId: TopicId;
@@ -40,25 +41,27 @@ function QuestionCard({
   color,
   onOpen,
 }: {
-  question: FootballQuestion;
+  question: Card;
   heard: boolean;
   color: string;
   onOpen: () => void;
 }) {
-  const hasLab = question.dialogue.some((t) => t.show && INTERACTIVE_SHOWS.has(t.show.kind));
+  const hasLab = question.shows.some((kind) => INTERACTIVE_SHOWS.has(kind));
   return (
     <button
       type="button"
       className={`qlist-card ${heard ? 'is-heard' : ''}`}
       style={{ '--bubble': color } as CSSProperties}
       onClick={onOpen}
+      onPointerEnter={() => prefetchQuestion(question.id)}
+      onFocus={() => prefetchQuestion(question.id)}
     >
       <strong>{question.title}</strong>
       <span className="qcard-pro-line">{question.proSubtitle}</span>
       <small className="qlist-trigger">📍 {question.trigger}</small>
       <span className="qlist-badges">
         <em>
-          💬 {question.dialogue.length} 问 {question.dialogue.length} 答 + 深度详解
+          💬 {question.turns} 问 {question.turns} 答 + 深度详解
         </em>
         {question.tags.map((tag) => (
           <em key={tag} className="is-ring">

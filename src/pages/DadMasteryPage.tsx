@@ -4,7 +4,7 @@ import {
   questionsIn,
   topicById,
   type TopicId,
-} from '../content/registry.ts';
+} from '../content/catalog.ts';
 
 type MasteryStage = {
   readonly id: string;

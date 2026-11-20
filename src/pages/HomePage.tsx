@@ -1,19 +1,20 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import { HeroPitchStage } from '../components/HeroPitchStage.tsx';
 import {
-  LEXICON_TERMS,
-  TRAINING_DRILLS,
   difficultyLabel,
   footballQuestions,
   footballTopics,
   pickRandomQuestion,
+  questionById,
   questionsIn,
-  searchQuestions,
+  resourceCounts,
   topicById,
+  type FootballQuestion,
+  type QuestionCard,
   type TopicId,
-} from '../content/registry.ts';
-import { VIDEO_RESOURCES } from '../content/videos/videos.ts';
-import { HLG_RESOURCES } from '../data/hlg-resources.ts';
+} from '../content/catalog.ts';
+import { loadAllQuestions, prefetchQuestion } from '../content/load.ts';
+import { searchCards, searchQuestions } from '../content/search.ts';
 
 const TOPIC_GROUPS: readonly { readonly title: string; readonly topicIds: readonly TopicId[] }[] = [
   { title: '⚖️ 场地、规则与不同踢法', topicIds: ['pitch-gear', 'rules-ref', 'football-family'] },
@@ -52,10 +53,23 @@ export function HomePage({
   onNavigate,
 }: Props) {
   const [query, setQuery] = useState('');
+  const [fullText, setFullText] = useState<readonly FootballQuestion[] | null>(null);
+  const [fullTextFailed, setFullTextFailed] = useState(false);
   const topicGroups = useMemo(groupTopics, []);
 
+  // 聚焦或输入时才加载全部正文；未加载完先用目录字段给出即时结果
+  const ensureFullText = () => {
+    if (fullText) return;
+    setFullTextFailed(false);
+    loadAllQuestions().then(setFullText, () => setFullTextFailed(true));
+  };
+
   const trimmed = query.trim();
-  const matches = useMemo(() => (trimmed ? searchQuestions(trimmed) : []), [trimmed]);
+  const matches = useMemo(() => {
+    if (!trimmed) return [];
+    const ids = fullText ? searchQuestions(fullText, trimmed) : searchCards(trimmed);
+    return ids.map((id) => questionById(id)).filter((q): q is QuestionCard => q !== undefined);
+  }, [trimmed, fullText]);
   const totalHeard = useMemo(
     () => footballQuestions.filter((q) => heard.includes(q.id)).length,
     [heard]
@@ -81,7 +95,11 @@ export function HomePage({
             <input
               type="search"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onFocus={ensureFullText}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                ensureFullText();
+              }}
               placeholder="搜一搜：比如 小罗、亚马尔、梅西餐巾纸、圆月弯刀、越位、青训、世界杯、回超……"
               aria-label="搜索足球问题"
             />
@@ -110,7 +128,17 @@ export function HomePage({
             <p className="home-results-meta">
               {matches.length > 0
                 ? `找到 ${matches.length} 个相关问题：`
-                : '没搜到这个词，试试「越位」「角球」「界外球」「xG」「骨骺」「箭头跑」「特长生」「回超」？'}
+                : fullText
+                  ? '没搜到这个词，试试「越位」「角球」「界外球」「xG」「骨骺」「箭头跑」「特长生」「回超」？'
+                  : '标题里没找到这个词……'}
+              {!fullText &&
+                (fullTextFailed ? (
+                  <button type="button" className="home-results-retry" onClick={ensureFullText}>
+                    正文没加载出来，点这里重试
+                  </button>
+                ) : (
+                  <span className="home-results-loading">（正在加载对话与详解正文，稍后结果会更全）</span>
+                ))}
             </p>
             {matches.length > 0 && (
               <div className="qlist-grid">
@@ -124,6 +152,8 @@ export function HomePage({
                       className={`qlist-card ${isDone ? 'is-heard' : ''}`}
                       style={{ '--bubble': tp?.color ?? '#2fb36d' } as CSSProperties}
                       onClick={() => onOpenQuestion(question.id)}
+                      onPointerEnter={() => prefetchQuestion(question.id)}
+                      onFocus={() => prefetchQuestion(question.id)}
                     >
                       <strong>{question.title}</strong>
                       <span className="qcard-pro-line">{question.proSubtitle}</span>
@@ -251,7 +281,7 @@ export function HomePage({
             <span className="wb-icon" aria-hidden="true">📋</span>
             <div>
               <strong>训练教案与 2026 体测标准</strong>
-              <p>{TRAINING_DRILLS.length} 套带场地布置图的分级教案 + 足协×体科所 2026 版四分位体测评估器 + PHV 生长速率监测。</p>
+              <p>{resourceCounts.drills} 套带场地布置图的分级教案 + 足协×体科所 2026 版四分位体测评估器 + PHV 生长速率监测。</p>
               <span className="wb-meta">教案图卡 + 体测计算 →</span>
             </div>
           </button>
@@ -266,7 +296,7 @@ export function HomePage({
             <div>
               <strong>中英双语足球术语词典</strong>
               <p>收录 Juego de Posición、Half-Space、La Pausa、PPDA、Bio-banding、DOGSO 等核心概念。</p>
-              <span className="wb-meta">{LEXICON_TERMS.length} 个术语词条 →</span>
+              <span className="wb-meta">{resourceCounts.lexicon} 个术语词条 →</span>
             </div>
           </button>
 
@@ -280,7 +310,7 @@ export function HomePage({
             <div>
               <strong>足球视频资料库</strong>
               <p>规则讲解、技术教学、青训游戏、防伤热身、战术分析，以及经典比赛回放和纪录片，每条附观看提示。</p>
-              <span className="wb-meta">{VIDEO_RESOURCES.length} 个官方视频资料 →</span>
+              <span className="wb-meta">{resourceCounts.videos} 个官方视频资料 →</span>
             </div>
           </button>
 
@@ -294,7 +324,7 @@ export function HomePage({
             <div>
               <strong>回龙观与京北足球地图</strong>
               <p>回龙观体育中心/奥北上东/西三旗/肖家河球场、昌平39所全国特色校名录、1+3直升与特长生学校。</p>
-              <span className="wb-meta">{HLG_RESOURCES.length} 处实地资料 →</span>
+              <span className="wb-meta">{resourceCounts.hlg} 处实地资料 →</span>
             </div>
           </button>
 

@@ -3,8 +3,6 @@ import { Avatar, CHARACTER_NAMES, type CharacterId } from '../components/Avatar.
 import { Cite, SourcesContext, SourcesList } from '../components/Cite.tsx';
 import { ShowView } from '../components/shows/ShowView.tsx';
 import {
-  DRILL_BY_ID,
-  LEXICON_BY_ID,
   difficultyLabel,
   linkedQuestions,
   nextQuestions,
@@ -13,7 +11,10 @@ import {
   type DialogueTurn,
   type FootballQuestion,
   type ReadLens,
-} from '../content/registry.ts';
+} from '../content/catalog.ts';
+import { DRILL_BY_ID } from '../content/drills/drills.ts';
+import { LEXICON_BY_ID } from '../content/lexicon/terms.ts';
+import { prefetchQuestion } from '../content/load.ts';
 import { videosForArticle } from '../content/videos/videos.ts';
 import { SOURCE_BY_ID } from '../data/sources.ts';
 import type { Source } from '../data/types.ts';
@@ -357,7 +358,13 @@ export function QuestionPage({
                 {relatedCross.map((item) => {
                   const otherTopic = topicById(item.topic);
                   return (
-                    <button key={item.id} type="button" onClick={() => onOpenQuestion(item.id)}>
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => onOpenQuestion(item.id)}
+                      onPointerEnter={() => prefetchQuestion(item.id)}
+                      onFocus={() => prefetchQuestion(item.id)}
+                    >
                       {otherTopic && (
                         <span className="qa-cross-tag">
                           {otherTopic.emoji} {otherTopic.short}

@@ -42,3 +42,12 @@ npm run dev
 
 打开终端显示的本地网址（默认 `http://localhost:5173`），即可开始探索。
 
+### 维护内容
+
+新增或修改 `src/content/domains/` 里的问答后，先刷新首屏目录，再跑校验与构建（需要 Node.js 22.18 及以上，可直接运行 `.ts` 数据文件）：
+
+```bash
+npm run content:index
+npm run check && npm run typecheck && npm run build
+```
+

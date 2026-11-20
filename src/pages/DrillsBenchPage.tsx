@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react';
-import { TRAINING_DRILLS } from '../content/registry.ts';
+import { TRAINING_DRILLS } from '../content/drills/drills.ts';
 import type { DrillDiagramType, TrainingDrill } from '../data/types.ts';
 
 /**

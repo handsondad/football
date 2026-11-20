@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { LEXICON_TERMS } from '../content/registry.ts';
+import { LEXICON_TERMS } from '../content/lexicon/terms.ts';
 import type { LexiconCategory } from '../data/types.ts';
 
 const CATEGORIES: readonly LexiconCategory[] = [
