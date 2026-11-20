@@ -1,6 +1,7 @@
 # AGENTS.md — 《足球奇遇记》AI 协同扩建与内容工程规范
 
-本文件面向所有后续维护与扩充本项目的 AI 智能体（Copilot CLI、Claude Code、Cursor、Codex 等）。在新增领域、编写课题、扩充教案/词典或开发交互沙盘前，**请完整阅读并严格遵循本规范**，确保生成内容在专业深度、叙事口吻、视觉交互与数据结构上与全站保持 100% 一致。
+本文件面向所有后续维护与扩充本项目的 AI 智能体（Copilot CLI、Claude Code、Cursor、Codex 等）。在新增领域、编写课题、扩充教案/词典或开发交互沙盘前，**请完整阅读并严格遵循本规范与项目 Skill**：
+- `.agents/skills/football-content-builder/SKILL.md`（镜像于 `skills/football-content-builder/SKILL.md`）
 
 ---
 
