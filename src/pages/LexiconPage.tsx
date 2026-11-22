@@ -1,6 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { LoadMore, usePaged } from '../components/LoadMore.tsx';
 import { LEXICON_TERMS } from '../content/lexicon/terms.ts';
 import type { LexiconCategory } from '../data/types.ts';
+
+const PAGE_SIZE = 12;
 
 const CATEGORIES: readonly LexiconCategory[] = [
   '战术模型与位置战',
@@ -35,6 +38,14 @@ export function LexiconPage({
         .includes(q);
     });
   }, [cat, query]);
+
+  const highlightAt = highlightId ? filtered.findIndex((t) => t.id === highlightId) + 1 : 0;
+  const paged = usePaged(filtered.length, PAGE_SIZE, `${cat}|${query.trim()}`, highlightAt);
+
+  useEffect(() => {
+    if (!highlightId) return;
+    document.getElementById(`term-${highlightId}`)?.scrollIntoView({ block: 'center' });
+  }, [highlightId]);
 
   return (
     <div className="subpage">
@@ -93,7 +104,7 @@ export function LexiconPage({
       </div>
 
       <div className="lexicon-grid">
-        {filtered.map((term) => (
+        {filtered.slice(0, paged.shown).map((term) => (
           <article
             key={term.id}
             id={`term-${term.id}`}
@@ -128,6 +139,17 @@ export function LexiconPage({
           </article>
         ))}
       </div>
+
+      {filtered.length === 0 && <p className="video-empty">没有找到这个术语，换个中文或英文关键词试试。</p>}
+
+      <LoadMore
+        shown={paged.shown}
+        total={filtered.length}
+        step={PAGE_SIZE}
+        unit="个词条"
+        onMore={paged.more}
+        onAll={paged.all}
+      />
     </div>
   );
 }

@@ -1531,6 +1531,54 @@ svg.avatar {
   color: var(--text-muted);
 }
 
+/* 长列表分批显示 */
+.load-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  margin: 20px 0 6px;
+}
+
+.load-more-btn,
+.load-more-all {
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 150ms var(--bounce);
+}
+
+.load-more-btn {
+  border: 2px solid #9fdcb8;
+  background: linear-gradient(135deg, #f0fbf4, #dcf5e6);
+  color: var(--pitch-deep);
+  box-shadow: var(--shadow-sm);
+}
+
+.load-more-all {
+  border: 1.5px dashed #c9d9cf;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.load-more-btn:hover,
+.load-more-all:hover {
+  transform: translateY(-1px);
+}
+
+.load-more-meta {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.sources-box .load-more {
+  margin: 10px 0 0;
+}
+
 .video-card h3 {
   font-size: 1.05rem;
 }

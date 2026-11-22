@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { questionById } from '../content/catalog.ts';
 import { VIDEO_RESOURCES } from '../content/videos/videos.ts';
 import type { VideoAudience, VideoCategory, VideoKind } from '../data/types.ts';
+import { LoadMore, usePaged } from '../components/LoadMore.tsx';
+
+const PAGE_SIZE = 12;
 
 const CATEGORIES: readonly { id: VideoCategory; emoji: string; hint: string }[] = [
   { id: '规则与裁判', emoji: '🟨', hint: '规则原文配合判罚讲解' },
@@ -56,9 +59,19 @@ export function VideoLibraryPage({
     });
   }, [cat, audience, query]);
 
+  // 按页面上的分组顺序排好再分批，分组标题跟着已显示的条目出现
+  const ordered = useMemo(
+    () => CATEGORIES.flatMap((c) => filtered.filter((v) => v.category === c.id)),
+    [filtered]
+  );
+  const highlightAt = highlightId ? ordered.findIndex((v) => v.id === highlightId) + 1 : 0;
+  const paged = usePaged(ordered.length, PAGE_SIZE, `${cat}|${audience}|${query.trim()}`, highlightAt);
+  const visible = ordered.slice(0, paged.shown);
+
   const groups = CATEGORIES.map((c) => ({
     ...c,
-    items: filtered.filter((v) => v.category === c.id),
+    total: filtered.filter((v) => v.category === c.id).length,
+    items: visible.filter((v) => v.category === c.id),
   })).filter((g) => g.items.length > 0);
 
   return (
@@ -151,7 +164,9 @@ export function VideoLibraryPage({
         <section key={g.id} className="video-group" aria-label={g.id}>
           <h2 className="video-group-title">
             {g.emoji} {g.id}
-            <small>{g.hint}</small>
+            <small>
+              {g.hint} · {g.total} 个
+            </small>
           </h2>
           <div className="lexicon-grid">
             {g.items.map((v) => (
@@ -215,6 +230,15 @@ export function VideoLibraryPage({
           </div>
         </section>
       ))}
+
+      <LoadMore
+        shown={paged.shown}
+        total={ordered.length}
+        step={PAGE_SIZE}
+        unit="个视频"
+        onMore={paged.more}
+        onAll={paged.all}
+      />
     </div>
   );
 }

@@ -262,7 +262,7 @@ export function PathwayPage({
         </div>
       </section>
 
-      <SourcesList sources={sources} />
+      <SourcesList sources={sources} preview={12} />
     </div>
   );
 }

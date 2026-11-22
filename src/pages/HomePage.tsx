@@ -1,5 +1,6 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import { HeroPitchStage } from '../components/HeroPitchStage.tsx';
+import { LoadMore, usePaged } from '../components/LoadMore.tsx';
 import {
   difficultyLabel,
   footballQuestions,
@@ -15,6 +16,8 @@ import {
 } from '../content/catalog.ts';
 import { loadAllQuestions, prefetchQuestion } from '../content/load.ts';
 import { searchCards, searchQuestions } from '../content/search.ts';
+
+const RESULT_PAGE = 12;
 
 const TOPIC_GROUPS: readonly { readonly title: string; readonly topicIds: readonly TopicId[] }[] = [
   { title: '⚖️ 场地、规则与不同踢法', topicIds: ['pitch-gear', 'rules-ref', 'football-family'] },
@@ -74,6 +77,7 @@ export function HomePage({
     () => footballQuestions.filter((q) => heard.includes(q.id)).length,
     [heard]
   );
+  const paged = usePaged(matches.length, RESULT_PAGE, trimmed);
 
   return (
     <div className="home">
@@ -142,7 +146,7 @@ export function HomePage({
             </p>
             {matches.length > 0 && (
               <div className="qlist-grid">
-                {matches.map((question) => {
+                {matches.slice(0, paged.shown).map((question) => {
                   const tp = topicById(question.topic);
                   const isDone = heard.includes(question.id);
                   return (
@@ -171,6 +175,14 @@ export function HomePage({
                 })}
               </div>
             )}
+            <LoadMore
+              shown={paged.shown}
+              total={matches.length}
+              step={RESULT_PAGE}
+              unit="个问题"
+              onMore={paged.more}
+              onAll={paged.all}
+            />
           </div>
         )}
       </section>
