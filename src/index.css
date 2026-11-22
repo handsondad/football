@@ -88,14 +88,98 @@ button {
   gap: 10px;
 }
 
+.nav-strip-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/* 一行排开不换行，放不下就横着滑；放得下时首尾的 auto 外边距让整排居中 */
 .nav-links {
+  --fl: 0px;
+  --fr: 0px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
   gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 3px 4px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--fl), #000 calc(100% - var(--fr)), transparent);
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-links.fade-left {
+  --fl: 56px;
+}
+
+.nav-links.fade-right {
+  --fr: 56px;
+}
+
+.nav-links.dragging,
+.nav-links.dragging * {
+  cursor: grabbing !important;
+  user-select: none;
+}
+
+.nav-links > :first-child {
+  margin-left: auto;
+}
+
+.nav-links > :last-child {
+  margin-right: auto;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  padding: 0 0 3px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pitch-deep);
+  font-size: 22px;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(80, 60, 20, 0.14);
+  transition: border-color 160ms;
+}
+
+.nav-arrow:hover {
+  border-color: var(--pitch-green);
+}
+
+.nav-arrow[hidden] {
+  display: none;
+}
+
+.nav-arrow.left {
+  left: 0;
+}
+
+.nav-arrow.right {
+  right: 0;
+}
+
+/* 触屏手指直接滑，淡出边就够提示了，不用箭头占地方 */
+@media (hover: none) {
+  .nav-arrow {
+    display: none;
+  }
 }
 
 .nav-tab {
+  flex: 0 0 auto;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -2614,19 +2698,7 @@ svg.avatar {
     padding: 8px 0;
   }
   .nav-links {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 12px;
-    width: 100%;
-  }
-  .nav-links::-webkit-scrollbar {
-    display: none;
-  }
-  .nav-tab {
-    flex: 0 0 auto;
-    white-space: nowrap;
+    padding: 3px 12px;
   }
 }
 

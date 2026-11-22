@@ -7,6 +7,7 @@ import {
   type TopicId,
 } from './content/catalog.ts';
 import { loadQuestion, peekQuestion } from './content/load.ts';
+import { NavStrip } from './components/NavStrip.tsx';
 import { useHeardQuestions } from './hooks/useHeardQuestions.ts';
 import { useReadLens } from './hooks/useReadLens.ts';
 import { CategoryPage } from './pages/CategoryPage.tsx';
@@ -49,6 +50,17 @@ type Route =
   | { page: 'pathway' };
 
 const SITE_TITLE = '足球奇遇记';
+
+/** 顶部导航只挂在首页；别的页面都有自己的返回按钮 */
+const HUB_TABS = [
+  ['mastery', '🎓 学习路线'],
+  ['lab', '🎛️ 战术沙盘'],
+  ['drills', '📋 教案与体测'],
+  ['lexicon', '📖 专业词典'],
+  ['videos', '🎬 视频资料'],
+  ['map', '📍 回龙观地图'],
+  ['pathway', '🏆 赛事与通路'],
+] as const;
 
 const PAGE_TITLES: Partial<Record<Route['page'], string>> = {
   mastery: '学习路线',
@@ -202,9 +214,6 @@ export default function App() {
 
   const seenCount = footballQuestions.filter((q) => heard.includes(q.id)).length;
 
-  const activeNav =
-    route.page === 'topic' || route.page === 'question' ? 'home' : route.page;
-
   const renderQuestion = (id: string) => {
     const card = questionById(id);
     if (!card) return null;
@@ -249,73 +258,27 @@ export default function App() {
 
   return (
     <div className="site-shell">
-      <nav className="global-nav" aria-label="主导航">
-        <div className="global-nav-inner">
-          <div className="nav-links">
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'home' ? 'is-current' : ''}`}
-              onClick={goHome}
-            >
-              🏠 足球分类
-              {seenCount > 0 && (
-                <span className="nav-badge">
-                  {seenCount}/{footballQuestions.length}
-                </span>
-              )}
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'mastery' ? 'is-current' : ''}`}
-              onClick={() => go('#/mastery')}
-            >
-              🎓 学习路线
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'lab' ? 'is-current' : ''}`}
-              onClick={() => go('#/lab')}
-            >
-              🎛️ 战术沙盘
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'drills' ? 'is-current' : ''}`}
-              onClick={() => go('#/drills')}
-            >
-              📋 教案与体测
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'lexicon' ? 'is-current' : ''}`}
-              onClick={() => go('#/lexicon')}
-            >
-              📖 专业词典
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'videos' ? 'is-current' : ''}`}
-              onClick={() => go('#/videos')}
-            >
-              🎬 视频资料
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'map' ? 'is-current' : ''}`}
-              onClick={() => go('#/map')}
-            >
-              📍 回龙观地图
-            </button>
-            <button
-              type="button"
-              className={`nav-tab ${activeNav === 'pathway' ? 'is-current' : ''}`}
-              onClick={() => go('#/pathway')}
-            >
-              🏆 赛事与通路
-            </button>
+      {route.page === 'home' && (
+        <nav className="global-nav" aria-label="主导航">
+          <div className="global-nav-inner">
+            <NavStrip>
+              <button type="button" className="nav-tab is-current" aria-current="page" onClick={goHome}>
+                🏠 足球分类
+                {seenCount > 0 && (
+                  <span className="nav-badge">
+                    {seenCount}/{footballQuestions.length}
+                  </span>
+                )}
+              </button>
+              {HUB_TABS.map(([page, label]) => (
+                <button key={page} type="button" className="nav-tab" onClick={() => go(`#/${page}`)}>
+                  {label}
+                </button>
+              ))}
+            </NavStrip>
           </div>
-        </div>
-      </nav>
+        </nav>
+      )}
 
       <ChunkErrorBoundary key={route.page}>
         <Suspense fallback={loadingView}>
